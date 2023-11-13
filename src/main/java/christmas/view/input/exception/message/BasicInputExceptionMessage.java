@@ -1,7 +1,7 @@
 package christmas.view.input.exception.message;
 
 import static christmas.global.ApplicationConstant.ERROR_PREFIX;
-import static christmas.view.input.constant.InputConstant.APPLICATION_MAX_INPUT_LENGTH;
+import static christmas.view.input.constant.InputNumberConstant.APPLICATION_MAX_INPUT_LENGTH;
 
 public enum BasicInputExceptionMessage {
     TOO_LONG_WITH_BLANKS(
