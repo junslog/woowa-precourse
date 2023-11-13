@@ -12,7 +12,7 @@ public class InputView {
     }
 
     public int getDay() {
-        return 0;
+        return inputParser.parseDay(readLine());
     }
 
     public Map<String, Integer> getOrders() {

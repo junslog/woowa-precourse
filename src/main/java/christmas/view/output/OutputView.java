@@ -7,6 +7,7 @@ public class OutputView {
 
     public void askUserToInsertReservationDay() {
         printMessage(INSERT_RESERVATION_DAY.getMessage());
+        printLine();
     }
 
 
