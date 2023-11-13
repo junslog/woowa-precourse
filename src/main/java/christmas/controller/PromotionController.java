@@ -8,6 +8,7 @@ import christmas.service.OrdersService;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.DayInputException;
+import christmas.view.input.exception.OrdersInputException;
 import christmas.view.output.OutputView;
 import java.util.Map;
 
@@ -51,7 +52,7 @@ public class PromotionController {
         try {
             Map<String, Integer> orders = askToInsertOrders();
             return ordersService.createOrders(orders);
-        } catch (BasicInputException e) {
+        } catch (BasicInputException | OrdersInputException e) {
             outputView.printErrorMessage(e.getMessage());
             return insertOrders();
         }
