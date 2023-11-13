@@ -12,13 +12,13 @@ public abstract class BasicValidator {
 
     protected void validateNotEmpty(final String userInput) {
         if (userInput.isEmpty()) {
-            throw BasicInputException.of(BasicInputExceptionMessage.EMPTY.getMesage());
+            throw BasicInputException.of(BasicInputExceptionMessage.EMPTY.getMessage());
         }
     }
 
     protected void validateLengthUnderMaxLength(final String userInput, final int maxLength) {
         if (userInput.length() > maxLength) {
-            throw BasicInputException.of(String.format(BasicInputExceptionMessage.TOO_LONG.getMesage(), maxLength));
+            throw BasicInputException.of(String.format(BasicInputExceptionMessage.TOO_LONG.getMessage(), maxLength));
         }
     }
 }

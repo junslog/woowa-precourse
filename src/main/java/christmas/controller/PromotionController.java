@@ -5,6 +5,7 @@ import christmas.domain.exception.InvalidDayException;
 import christmas.service.DayService;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.BasicInputException;
+import christmas.view.input.exception.DayInputException;
 import christmas.view.output.OutputView;
 
 public class PromotionController {
@@ -28,7 +29,7 @@ public class PromotionController {
         try {
             int reservationDay = askToInsertReservationDay();
             return dayService.createDay(reservationDay);
-        } catch (BasicInputException | InvalidDayException e) {
+        } catch (BasicInputException | DayInputException | InvalidDayException e) {
             outputView.printErrorMessage(e.getMessage());
             return insertDay();
         }
