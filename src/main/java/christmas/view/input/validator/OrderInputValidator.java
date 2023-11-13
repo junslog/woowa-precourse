@@ -4,6 +4,7 @@ import static christmas.view.input.constant.InputNumberConstant.MENU_COUNT_INDEX
 import static christmas.view.input.constant.InputNumberConstant.MENU_NAME_INDEX;
 import static christmas.view.input.constant.InputNumberConstant.ORDER_MAX_INPUT_LENGTH;
 import static christmas.view.input.constant.InputSymbolConstant.ORDER_DELIMITER;
+import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 import static christmas.view.input.exception.message.OrdersInputExceptionMessage.INVALID_ORDER_FORMAT;
 
 import christmas.view.input.exception.OrdersInputException;
@@ -21,7 +22,7 @@ public class OrderInputValidator extends BasicValidator {
     }
 
     public void validate(final String order) {
-        super.validate(order, ORDER_MAX_INPUT_LENGTH.getValue());
+        super.validate(order, ORDER_SYMBOL.getSymbol(), ORDER_MAX_INPUT_LENGTH.getValue());
         validateContainingDelimiter(order);
         validateMenu(splitToMenu(order));
     }
