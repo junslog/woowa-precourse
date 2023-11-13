@@ -1,13 +1,11 @@
 package christmas.domain.exception;
 
-import christmas.domain.exception.message.InvalidDayExceptionMessage;
-
 public class InvalidDayException extends IllegalArgumentException {
-    private InvalidDayException(final InvalidDayExceptionMessage invalidDayExceptionMessage) {
-        super(invalidDayExceptionMessage.getMesage());
+    private InvalidDayException(final String invalidDayExceptionMessage) {
+        super(invalidDayExceptionMessage);
     }
 
-    public static InvalidDayException of(final InvalidDayExceptionMessage userMoneyInputExceptionMessage) {
+    public static InvalidDayException of(final String userMoneyInputExceptionMessage) {
         return new InvalidDayException(userMoneyInputExceptionMessage);
     }
 }
