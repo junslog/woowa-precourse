@@ -18,7 +18,7 @@ public class InputView {
     }
 
     public Map<String, Integer> getOrders() {
-        return null;
+        return inputParser.parseOrders(readLine());
     }
 
     private String readLine() {

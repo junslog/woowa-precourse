@@ -1,27 +1,33 @@
 package christmas.controller;
 
 import christmas.domain.DecemberDay;
+import christmas.domain.Orders;
 import christmas.domain.exception.InvalidDayException;
 import christmas.service.DayService;
+import christmas.service.OrdersService;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.DayInputException;
 import christmas.view.output.OutputView;
+import java.util.Map;
 
 public class PromotionController {
     private final InputView inputView;
     private final OutputView outputView;
     private final DayService dayService;
+    private final OrdersService ordersService;
 
     public PromotionController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.dayService = new DayService();
+        this.ordersService = new OrdersService();
     }
 
     public void run() {
         outputView.printGreetingMessage();
         DecemberDay day = insertDay();
+        Orders orders = insertOrders();
 
         outputView.askToInsertOrders();
     }
@@ -39,5 +45,20 @@ public class PromotionController {
     private int askToInsertReservationDay() throws BasicInputException, DayInputException {
         outputView.askToInsertReservationDay();
         return inputView.getDay();
+    }
+
+    private Orders insertOrders() {
+        try {
+            Map<String, Integer> orders = askToInsertOrders();
+            return ordersService.createOrders(orders);
+        } catch (BasicInputException e) {
+            outputView.printErrorMessage(e.getMessage());
+            return insertOrders();
+        }
+    }
+
+    private Map<String, Integer> askToInsertOrders() {
+        outputView.askToInsertOrders();
+        return inputView.getOrders();
     }
 }

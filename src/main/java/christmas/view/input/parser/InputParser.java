@@ -1,23 +1,38 @@
 package christmas.view.input.parser;
 
 import static christmas.view.input.constant.InputConstant.BLANK;
+import static christmas.view.input.constant.InputConstant.ORDERS_DELIMITER;
+import static christmas.view.input.constant.InputConstant.ORDER_COUNT_INDEX;
+import static christmas.view.input.constant.InputConstant.ORDER_DELIMITER;
+import static christmas.view.input.constant.InputConstant.ORDER_NAME_INDEX;
 import static christmas.view.input.constant.InputConstant.VOID;
 
 import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.DayInputException;
 import christmas.view.input.validator.DayInputValidator;
+import christmas.view.input.validator.OrdersInputValidator;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class InputParser {
     private final DayInputValidator dayInputValidator;
+    private final OrdersInputValidator ordersInputValidator;
 
     public InputParser() {
         this.dayInputValidator = new DayInputValidator();
+        this.ordersInputValidator = new OrdersInputValidator();
     }
 
     public int parseDay(String userInput) throws BasicInputException, DayInputException {
         userInput = removeBlank(userInput);
         dayInputValidator.validate(userInput);
         return parseToInt(userInput);
+    }
+
+    public Map<String, Integer> parseOrders(String userInput) {
+        ordersInputValidator.validate(userInput);
+        return parseToOrderMap(userInput);
     }
 
     private int parseToInt(String userInput) {
@@ -29,5 +44,14 @@ public class InputParser {
             userInput = userInput.replace(BLANK, VOID);
         }
         return userInput;
+    }
+
+    private Map<String, Integer> parseToOrderMap(String userInput) {
+        return Arrays.stream(userInput.split(ORDERS_DELIMITER))
+                .map(orders -> orders.split(ORDER_DELIMITER))
+                .collect(Collectors.toMap(
+                        order -> order[ORDER_NAME_INDEX],
+                        order -> parseToInt(order[ORDER_COUNT_INDEX])
+                ));
     }
 }
