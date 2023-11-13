@@ -4,8 +4,6 @@ import static christmas.domain.constant.DayConstant.DECEMBER_FIRST_DAY;
 import static christmas.domain.constant.DayConstant.DECEMBER_LAST_DAY;
 
 public class DecemberDay extends DayPerMonth {
-    private final int FIRST_DAY = DECEMBER_FIRST_DAY.getDay();
-    private final int LAST_DAY = DECEMBER_LAST_DAY.getDay();
     private final boolean isChristmasPromotionApplicable;
     private final boolean isWeekend;
     private final boolean hasStar;
@@ -32,5 +30,10 @@ public class DecemberDay extends DayPerMonth {
 
     private static boolean judgeHasStar(final int day) {
         return true;
+    }
+
+    @Override
+    protected boolean isInAppropriateRange(final int day) {
+        return day >= DECEMBER_FIRST_DAY.getDay() && day <= DECEMBER_LAST_DAY.getDay();
     }
 }
