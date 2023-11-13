@@ -1,7 +1,8 @@
 package christmas.domain.constant;
 
 public enum DayConstant {
-    
+    DEFAULT_FIRST_DAY(1),
+    DEFAULT_LAST_DAY(30),
     DECEMBER_FIRST_DAY(1),
     DECEMBER_LAST_DAY(31);
 

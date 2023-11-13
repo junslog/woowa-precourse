@@ -4,15 +4,15 @@ import static christmas.domain.constant.DayConstant.DECEMBER_FIRST_DAY;
 import static christmas.domain.constant.DayConstant.DECEMBER_LAST_DAY;
 
 public class DecemberDay extends DayPerMonth {
+    private final int FIRST_DAY = DECEMBER_FIRST_DAY.getDay();
+    private final int LAST_DAY = DECEMBER_LAST_DAY.getDay();
     private final boolean isChristmasPromotionApplicable;
     private final boolean isWeekend;
     private final boolean hasStar;
 
     private DecemberDay(final int day, final boolean isChristmasPromotionApplicable, final boolean isWeekend,
                         final boolean hasStar) {
-        super(day);
-        this.FIRST_DAY = DECEMBER_FIRST_DAY.getDay();
-        this.LAST_DAY = DECEMBER_LAST_DAY.getDay();
+        validate(day);
         this.isChristmasPromotionApplicable = isChristmasPromotionApplicable;
         this.isWeekend = isWeekend;
         this.hasStar = hasStar;

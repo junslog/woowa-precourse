@@ -1,15 +1,16 @@
 package christmas.domain;
 
+import static christmas.domain.constant.DayConstant.DEFAULT_FIRST_DAY;
+import static christmas.domain.constant.DayConstant.DEFAULT_LAST_DAY;
 import static christmas.domain.exception.message.InvalidDayExceptionMessage.NOT_IN_APPROPRIATE_RANGE;
 
 import christmas.domain.exception.InvalidDayException;
 
 public abstract class DayPerMonth {
-    protected int FIRST_DAY;
-    protected int LAST_DAY;
+    protected final int FIRST_DAY = DEFAULT_FIRST_DAY.getDay();
+    protected final int LAST_DAY = DEFAULT_LAST_DAY.getDay();
 
-    public DayPerMonth(final int day) {
-        validate(day);
+    public DayPerMonth() {
     }
 
     protected void validate(final int day) {
