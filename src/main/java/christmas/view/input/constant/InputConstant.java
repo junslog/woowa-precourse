@@ -3,6 +3,7 @@ package christmas.view.input.constant;
 public class InputConstant {
     public static String BLANK = " ";
     public static String VOID = "";
+    public static int APPLICATION_MAX_INPUT_LENGTH = 2000;
     public static int DAY_MAX_INPUT_LENGTH = 2;
     public static int POSITIVE_BOUNDARY_VALUE = 0;
     public static String ORDERS_DELIMITER = ",";
