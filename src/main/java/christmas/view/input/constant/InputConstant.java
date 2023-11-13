@@ -8,8 +8,9 @@ public class InputConstant {
     public static int POSITIVE_BOUNDARY_VALUE = 0;
     public static String ORDERS_DELIMITER = ",";
     public static String ORDER_DELIMITER = "-";
-    public static int ORDER_NAME_INDEX = 0;
-    public static int ORDER_COUNT_INDEX = 1;
+    public static int MENU_NAME_INDEX = 0;
+    public static int MENU_COUNT_INDEX = 1;
     public static int ORDERS_MAX_INPUT_LENGTH = 1000;
     public static int ORDER_MAX_INPUT_LENGTH = 50;
+    public static int MENU_NAME_MAX_INPUT_LENGTH = 30;
 }

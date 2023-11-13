@@ -29,8 +29,6 @@ public class PromotionController {
         outputView.printGreetingMessage();
         DecemberDay day = insertDay();
         Orders orders = insertOrders();
-
-        outputView.askToInsertOrders();
     }
 
     private DecemberDay insertDay() {

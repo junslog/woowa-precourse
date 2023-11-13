@@ -2,10 +2,10 @@ package christmas.view.input.parser;
 
 import static christmas.view.input.constant.InputConstant.APPLICATION_MAX_INPUT_LENGTH;
 import static christmas.view.input.constant.InputConstant.BLANK;
+import static christmas.view.input.constant.InputConstant.MENU_COUNT_INDEX;
+import static christmas.view.input.constant.InputConstant.MENU_NAME_INDEX;
 import static christmas.view.input.constant.InputConstant.ORDERS_DELIMITER;
-import static christmas.view.input.constant.InputConstant.ORDER_COUNT_INDEX;
 import static christmas.view.input.constant.InputConstant.ORDER_DELIMITER;
-import static christmas.view.input.constant.InputConstant.ORDER_NAME_INDEX;
 import static christmas.view.input.constant.InputConstant.VOID;
 import static christmas.view.input.exception.message.BasicInputExceptionMessage.TOO_LONG_WITH_BLANKS;
 
@@ -70,8 +70,8 @@ public class InputParser {
         return Arrays.stream(userInput.split(ORDERS_DELIMITER))
                 .map(orders -> orders.split(ORDER_DELIMITER))
                 .collect(Collectors.toMap(
-                        order -> order[ORDER_NAME_INDEX],
-                        order -> parseToInt(order[ORDER_COUNT_INDEX])
+                        order -> order[MENU_NAME_INDEX],
+                        order -> parseToInt(order[MENU_COUNT_INDEX])
                 ));
     }
 }
