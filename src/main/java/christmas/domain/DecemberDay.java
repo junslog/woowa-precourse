@@ -8,8 +8,9 @@ public class DecemberDay extends DayPerMonth {
     private final boolean isWeekend;
     private final boolean hasStar;
 
-    private DecemberDay(final boolean isChristmasPromotionApplicable, final boolean isWeekend, final boolean hasStar) {
-        super();
+    private DecemberDay(final int day, final boolean isChristmasPromotionApplicable, final boolean isWeekend,
+                        final boolean hasStar) {
+        super(day);
         this.FIRST_DAY = DECEMBER_FIRST_DAY.getDay();
         this.LAST_DAY = DECEMBER_LAST_DAY.getDay();
         this.isChristmasPromotionApplicable = isChristmasPromotionApplicable;
@@ -17,19 +18,19 @@ public class DecemberDay extends DayPerMonth {
         this.hasStar = hasStar;
     }
 
-    public static DecemberDay from(int day) {
-        return new DecemberDay(judgeIsChristmasPromotionApplicable(day), judgeIsWeekend(day), judgeHasStar(day));
+    public static DecemberDay from(final int day) {
+        return new DecemberDay(day, judgeIsChristmasPromotionApplicable(day), judgeIsWeekend(day), judgeHasStar(day));
     }
 
-    private static boolean judgeIsChristmasPromotionApplicable(int day) {
+    private static boolean judgeIsChristmasPromotionApplicable(final int day) {
         return true;
     }
 
-    private static boolean judgeIsWeekend(int day) {
+    private static boolean judgeIsWeekend(final int day) {
         return true;
     }
 
-    private static boolean judgeHasStar(int day) {
+    private static boolean judgeHasStar(final int day) {
         return true;
     }
 }

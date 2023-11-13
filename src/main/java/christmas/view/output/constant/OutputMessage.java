@@ -1,6 +1,6 @@
 package christmas.view.output.constant;
 
-import static christmas.global.PromotionConstant.CURRENT_PROMOTION_MONTH;
+import static christmas.global.ApplicationConstant.CURRENT_PROMOTION_MONTH;
 import static christmas.view.output.constant.OutputConstant.NEW_LINE;
 
 public enum OutputMessage {
