@@ -10,6 +10,7 @@ import static christmas.view.input.constant.InputConstant.VOID;
 import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.DayInputException;
 import christmas.view.input.validator.DayInputValidator;
+import christmas.view.input.validator.OrderInputValidator;
 import christmas.view.input.validator.OrdersInputValidator;
 import java.util.Arrays;
 import java.util.Map;
@@ -18,10 +19,12 @@ import java.util.stream.Collectors;
 public class InputParser {
     private final DayInputValidator dayInputValidator;
     private final OrdersInputValidator ordersInputValidator;
+    private final OrderInputValidator orderInputValidator;
 
     public InputParser() {
         this.dayInputValidator = new DayInputValidator();
         this.ordersInputValidator = new OrdersInputValidator();
+        this.orderInputValidator = new OrderInputValidator();
     }
 
     public int parseDay(String userInput) throws BasicInputException, DayInputException {
@@ -31,6 +34,7 @@ public class InputParser {
     }
 
     public Map<String, Integer> parseOrders(String userInput) {
+        userInput = removeBlank(userInput);
         ordersInputValidator.validate(userInput);
         return parseToOrderMap(userInput);
     }
