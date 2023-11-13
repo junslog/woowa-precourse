@@ -2,16 +2,22 @@ package christmas.view.output;
 
 import static christmas.view.output.constant.OutputConstant.NEW_LINE;
 import static christmas.view.output.constant.OutputMessage.GREETING;
+import static christmas.view.output.constant.OutputMessage.INSERT_ORDERS;
 import static christmas.view.output.constant.OutputMessage.INSERT_RESERVATION_DAY;
 
 public class OutputView {
     public void printGreetingMessage() {
-        printMessage(GREETING.getMessage());
+        print(GREETING.getMessage());
         printLine();
     }
 
     public void askToInsertReservationDay() {
-        printMessage(INSERT_RESERVATION_DAY.getMessage());
+        print(INSERT_RESERVATION_DAY.getMessage());
+        printLine();
+    }
+
+    public void askToInsertOrders() {
+        print(INSERT_ORDERS.getMessage());
         printLine();
     }
 
@@ -21,11 +27,11 @@ public class OutputView {
     }
 
     public void printErrorMessage(final String message) {
-        printMessage(message);
+        print(message);
         printLine();
     }
 
-    private <T> void printMessage(final T message) {
+    private <T> void print(final T message) {
         System.out.print(message);
     }
 }
