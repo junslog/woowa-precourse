@@ -5,10 +5,11 @@ import static christmas.view.input.constant.InputConstant.POSITIVE_BOUNDARY_VALU
 import static christmas.view.input.exception.message.DayInputExceptionMessage.NOT_NUMERIC_TYPE;
 import static christmas.view.input.exception.message.DayInputExceptionMessage.NOT_POSITIVE;
 
+import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.DayInputException;
 
 public class DayInputValidator extends BasicValidator implements PositiveIntegerCheckable {
-    public void validate(final String day) {
+    public void validate(final String day) throws BasicInputException, DayInputException {
         super.validate(day, DAY_MAX_INPUT_LENGTH);
         validateNumeric(day);
         validatePositive(day);
@@ -30,7 +31,7 @@ public class DayInputValidator extends BasicValidator implements PositiveInteger
             throw DayInputException.of(NOT_POSITIVE.getMessage());
         }
     }
-    
+
     private int parseToInt(final String userInput) {
         return Integer.parseInt(userInput);
     }

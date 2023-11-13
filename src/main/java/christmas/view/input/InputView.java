@@ -1,6 +1,8 @@
 package christmas.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.view.input.exception.BasicInputException;
+import christmas.view.input.exception.DayInputException;
 import christmas.view.input.parser.InputParser;
 import java.util.Map;
 
@@ -11,7 +13,7 @@ public class InputView {
         inputParser = new InputParser();
     }
 
-    public int getDay() {
+    public int getDay() throws BasicInputException, DayInputException {
         return inputParser.parseDay(readLine());
     }
 

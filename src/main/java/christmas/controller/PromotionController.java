@@ -36,7 +36,7 @@ public class PromotionController {
         }
     }
 
-    private int askToInsertReservationDay() {
+    private int askToInsertReservationDay() throws BasicInputException, DayInputException {
         outputView.askToInsertReservationDay();
         return inputView.getDay();
     }

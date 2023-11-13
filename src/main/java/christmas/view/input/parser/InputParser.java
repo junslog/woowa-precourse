@@ -3,6 +3,8 @@ package christmas.view.input.parser;
 import static christmas.view.input.constant.InputConstant.BLANK;
 import static christmas.view.input.constant.InputConstant.VOID;
 
+import christmas.view.input.exception.BasicInputException;
+import christmas.view.input.exception.DayInputException;
 import christmas.view.input.validator.DayInputValidator;
 
 public class InputParser {
@@ -12,7 +14,7 @@ public class InputParser {
         this.dayInputValidator = new DayInputValidator();
     }
 
-    public int parseDay(String userInput) {
+    public int parseDay(String userInput) throws BasicInputException, DayInputException {
         userInput = removeBlank(userInput);
         dayInputValidator.validate(userInput);
         return parseToInt(userInput);
