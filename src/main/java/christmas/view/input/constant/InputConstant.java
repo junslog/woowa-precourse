@@ -10,4 +10,5 @@ public class InputConstant {
     public static int ORDER_NAME_INDEX = 0;
     public static int ORDER_COUNT_INDEX = 1;
     public static int ORDERS_MAX_INPUT_LENGTH = 1000;
+    public static int ORDER_MAX_INPUT_LENGTH = 50;
 }

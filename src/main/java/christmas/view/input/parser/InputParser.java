@@ -36,6 +36,7 @@ public class InputParser {
     public Map<String, Integer> parseOrders(String userInput) {
         userInput = removeBlank(userInput);
         ordersInputValidator.validate(userInput);
+        validateEachOrder(userInput);
         return parseToOrderMap(userInput);
     }
 
@@ -48,6 +49,11 @@ public class InputParser {
             userInput = userInput.replace(BLANK, VOID);
         }
         return userInput;
+    }
+
+    private void validateEachOrder(final String userInput) {
+        Arrays.stream(userInput.split(ORDERS_DELIMITER))
+                .forEach(orderInputValidator::validate);
     }
 
     private Map<String, Integer> parseToOrderMap(String userInput) {
