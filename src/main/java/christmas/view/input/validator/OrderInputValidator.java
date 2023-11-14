@@ -25,7 +25,7 @@ public class OrderInputValidator extends BasicValidator {
     public void validate(final String order) {
         super.validate(order, ORDER_SYMBOL.getSymbol(), ORDER_MAX_INPUT_LENGTH.getValue());
         validateContainingDelimiter(order);
-        validateEndsWithDelimiter(order);
+        validateNotEndsWithDelimiter(order);
         validateMenu(splitToMenu(order));
     }
 
@@ -39,7 +39,7 @@ public class OrderInputValidator extends BasicValidator {
         return order.contains(ORDER_DELIMITER.getSymbol());
     }
 
-    private void validateEndsWithDelimiter(final String order) {
+    private void validateNotEndsWithDelimiter(final String order) {
         if (endsWithDelimiter(order)) {
             throw OrdersInputException.of(EMPTY_MENU_COUNT.getMessage());
         }
@@ -54,8 +54,8 @@ public class OrderInputValidator extends BasicValidator {
                 .collect(Collectors.toList());
     }
 
-    private void validateMenu(List<String> menus) {
-        menuNameInputValidator.validate(menus.get(MENU_NAME_INDEX.getValue()));
-        menuCountInputValidator.validate(menus.get(MENU_COUNT_INDEX.getValue()));
+    private void validateMenu(List<String> menu) {
+        menuNameInputValidator.validate(menu.get(MENU_NAME_INDEX.getValue()));
+        menuCountInputValidator.validate(menu.get(MENU_COUNT_INDEX.getValue()));
     }
 }

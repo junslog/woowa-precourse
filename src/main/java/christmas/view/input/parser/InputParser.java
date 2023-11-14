@@ -74,7 +74,7 @@ public class InputParser {
                 .forEach(orderInputValidator::validate);
     }
 
-    private Map<String, Integer> parseToOrderMap(String userInput) {
+    private Map<String, Integer> parseToOrderMap(final String userInput) {
         return Arrays.stream(userInput.split(ORDERS_DELIMITER.getSymbol()))
                 .map(orders -> orders.split(ORDER_DELIMITER.getSymbol()))
                 .collect(Collectors.toMap(
