@@ -1,10 +1,13 @@
 package christmas;
 
-import christmas.controller.PromotionController;
+import christmas.view.input.InputView;
+import christmas.view.output.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        PromotionController promotionController = new PromotionController();
-        promotionController.run();
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        DecemberPromotion decemberPromotion = new DecemberPromotion(inputView, outputView);
+        decemberPromotion.run();
     }
 }
