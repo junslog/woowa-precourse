@@ -1,0 +1,30 @@
+package christmas.service;
+
+
+import static christmas.domain.constant.event.EventConstant.GIFT_CHAMPAGNE_COUNT;
+
+import christmas.domain.EventManager;
+import christmas.domain.Orders;
+import christmas.domain.constant.orders.Menu;
+import christmas.dto.BenefitsDetailsDto;
+import christmas.dto.GiftDto;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class EventManagerService {
+    public GiftDto createGiftDto(Orders orders) {
+        Map<String, Integer> gifts = new LinkedHashMap<>();
+        if (orders.isGiftEventApplicable()) {
+            makeGifts(gifts);
+        }
+        return GiftDto.from(gifts);
+    }
+
+    private void makeGifts(Map<String, Integer> gifts) {
+        gifts.put(Menu.CHAMPAGNE.getName(), GIFT_CHAMPAGNE_COUNT.getValue());
+    }
+
+    public BenefitsDetailsDto createBenefitsDetailsDto(EventManager eventManager) {
+        return BenefitsDetailsDto.from(eventManager.createBenefitsDetails());
+    }
+}

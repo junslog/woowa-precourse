@@ -2,9 +2,10 @@ package christmas;
 
 import christmas.controller.OrdersController;
 import christmas.controller.ReservationDayController;
+import christmas.domain.EventManager;
 import christmas.domain.Orders;
 import christmas.domain.ReservationDay;
-import christmas.service.EventService;
+import christmas.service.EventManagerService;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 
@@ -12,28 +13,30 @@ public class EventPlanner {
     private final OutputView outputView;
     private final ReservationDayController reservationDayController;
     private final OrdersController ordersController;
-    private final EventService eventService;
+    private final EventManagerService eventManagerService;
 
     public EventPlanner(InputView inputView, OutputView outputView) {
         this.outputView = outputView;
         reservationDayController = new ReservationDayController(inputView, outputView);
         ordersController = new OrdersController(inputView, outputView);
-        eventService = new EventService();
+        eventManagerService = new EventManagerService();
         outputView.printGreetingMessage();
     }
 
     public void execute() {
         ReservationDay reservationDay = reservationDayController.insertReservationDay();
         Orders orders = ordersController.insertOrders();
-        printResult(reservationDay, orders);
+        EventManager eventManager = EventManager.of(reservationDay, orders);
+
+        printResult(reservationDay, orders, eventManager);
     }
 
-    private void printResult(ReservationDay reservationDay, Orders orders) {
+    private void printResult(ReservationDay reservationDay, Orders orders, EventManager eventManager) {
         printIntroMessage(reservationDay);
         printOrderedMenus(orders);
         printTotalAmountWithNoDiscount(orders);
         printGiftMenu(orders);
-        printBenefitsDetails(reservationDay, orders);
+        printBenefitsDetails(eventManager);
     }
 
     private void printIntroMessage(ReservationDay reservationDay) {
@@ -49,10 +52,10 @@ public class EventPlanner {
     }
 
     private void printGiftMenu(Orders orders) {
-        outputView.printGiftMenu(eventService.createGiftDto(orders));
+        outputView.printGiftMenu(eventManagerService.createGiftDto(orders));
     }
 
-    private void printBenefitsDetails(ReservationDay reservationDay, Orders orders) {
-        outputView.printBenefitsDetails(eventService.createBenefitsDetailsDto(reservationDay, orders));
+    private void printBenefitsDetails(EventManager eventManager) {
+        outputView.printBenefitsDetails(eventManagerService.createBenefitsDetailsDto(eventManager));
     }
 }
