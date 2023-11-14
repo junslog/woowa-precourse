@@ -17,6 +17,6 @@ public abstract class DayPerMonth {
     }
 
     protected boolean isInAppropriateRange(final int day) {
-        return day >= DEFAULT_FIRST_DAY.getDay() && day <= DECEMBER_LAST_DAY.getDay();
+        return day >= DEFAULT_FIRST_DAY.getValue() && day <= DECEMBER_LAST_DAY.getValue();
     }
 }

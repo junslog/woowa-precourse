@@ -32,6 +32,7 @@ public class PromotionController {
         Orders orders = insertOrders();
         System.out.println(orders.calculateTotalAmount());
         System.out.println(day.isChristmasPromotionApplicable());
+        System.out.println(day.isWeekendPromotionApplicable());
     }
 
     private DecemberDay insertDay() {

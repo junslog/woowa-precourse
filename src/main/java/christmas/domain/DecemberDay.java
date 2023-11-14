@@ -3,6 +3,9 @@ package christmas.domain;
 import static christmas.domain.constant.DayConstant.DECEMBER_CHRISTMAS_DAY;
 import static christmas.domain.constant.DayConstant.DECEMBER_FIRST_DAY;
 import static christmas.domain.constant.DayConstant.DECEMBER_LAST_DAY;
+import static christmas.domain.constant.DayConstant.FRIDAY_VALUE;
+import static christmas.domain.constant.DayConstant.SATURDAY_VALUE;
+import static christmas.domain.constant.DayConstant.WEEKDAY_LENGTH;
 
 import christmas.domain.exception.InvalidDayException;
 
@@ -19,11 +22,16 @@ public class DecemberDay extends DayPerMonth {
     }
 
     public boolean isChristmasPromotionApplicable() {
-        return day >= DECEMBER_FIRST_DAY.getDay() && day <= DECEMBER_CHRISTMAS_DAY.getDay();
+        return day >= DECEMBER_FIRST_DAY.getValue() && day <= DECEMBER_CHRISTMAS_DAY.getValue();
     }
 
-    private static boolean judgeIsWeekend(final int day) {
-        return true;
+    public boolean isWeekendPromotionApplicable() {
+        return isWeekend();
+    }
+
+    private boolean isWeekend() {
+        return day % WEEKDAY_LENGTH.getValue() == FRIDAY_VALUE.getValue()
+                || day % WEEKDAY_LENGTH.getValue() == SATURDAY_VALUE.getValue();
     }
 
     private static boolean judgeHasStar(final int day) {
@@ -32,6 +40,6 @@ public class DecemberDay extends DayPerMonth {
 
     @Override
     protected boolean isInAppropriateRange(final int day) {
-        return day >= DECEMBER_FIRST_DAY.getDay() && day <= DECEMBER_LAST_DAY.getDay();
+        return day >= DECEMBER_FIRST_DAY.getValue() && day <= DECEMBER_LAST_DAY.getValue();
     }
 }
