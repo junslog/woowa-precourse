@@ -1,29 +1,25 @@
 package christmas.domain;
 
+import static christmas.domain.constant.DayConstant.DECEMBER_CHRISTMAS_DAY;
 import static christmas.domain.constant.DayConstant.DECEMBER_FIRST_DAY;
 import static christmas.domain.constant.DayConstant.DECEMBER_LAST_DAY;
 
 import christmas.domain.exception.InvalidDayException;
 
 public class DecemberDay extends DayPerMonth {
-    private final boolean isChristmasPromotionApplicable;
-    private final boolean isWeekend;
-    private final boolean hasStar;
+    private final int day;
 
-    private DecemberDay(final int day, final boolean isChristmasPromotionApplicable, final boolean isWeekend,
-                        final boolean hasStar) {
+    private DecemberDay(final int day) {
         validate(day);
-        this.isChristmasPromotionApplicable = isChristmasPromotionApplicable;
-        this.isWeekend = isWeekend;
-        this.hasStar = hasStar;
+        this.day = day;
     }
 
     public static DecemberDay from(final int day) throws InvalidDayException {
-        return new DecemberDay(day, judgeIsChristmasPromotionApplicable(day), judgeIsWeekend(day), judgeHasStar(day));
+        return new DecemberDay(day);
     }
 
-    private static boolean judgeIsChristmasPromotionApplicable(final int day) {
-        return true;
+    public boolean isChristmasPromotionApplicable() {
+        return day >= DECEMBER_FIRST_DAY.getDay() && day <= DECEMBER_CHRISTMAS_DAY.getDay();
     }
 
     private static boolean judgeIsWeekend(final int day) {

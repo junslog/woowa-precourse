@@ -31,6 +31,7 @@ public class PromotionController {
         DecemberDay day = insertDay();
         Orders orders = insertOrders();
         System.out.println(orders.calculateTotalAmount());
+        System.out.println(day.isChristmasPromotionApplicable());
     }
 
     private DecemberDay insertDay() {
