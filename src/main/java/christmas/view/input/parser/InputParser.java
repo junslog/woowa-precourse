@@ -4,8 +4,10 @@ import static christmas.view.input.constant.InputNumberConstant.APPLICATION_MAX_
 import static christmas.view.input.constant.InputNumberConstant.MENU_COUNT_INDEX;
 import static christmas.view.input.constant.InputNumberConstant.MENU_NAME_INDEX;
 import static christmas.view.input.constant.InputSymbolConstant.BLANK;
+import static christmas.view.input.constant.InputSymbolConstant.DAY_SYMBOL;
 import static christmas.view.input.constant.InputSymbolConstant.ORDERS_DELIMITER;
 import static christmas.view.input.constant.InputSymbolConstant.ORDER_DELIMITER;
+import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 import static christmas.view.input.constant.InputSymbolConstant.VOID;
 import static christmas.view.input.exception.message.BasicInputExceptionMessage.TOO_LONG_WITH_BLANKS;
 
@@ -30,23 +32,29 @@ public class InputParser {
     }
 
     public int parseDay(String userInput) throws BasicInputException, DayInputException {
-        checkLengthIsUnderUpperLimit(userInput);
+        checkDayLengthIsUnderUpperLimit(userInput);
         userInput = removeBlank(userInput);
         dayInputValidator.validate(userInput);
         return parseToInt(userInput);
     }
 
     public Map<String, Integer> parseOrders(String userInput) {
-        checkLengthIsUnderUpperLimit(userInput);
+        checkOrdersLengthIsUnderUpperLimit(userInput);
         userInput = removeBlank(userInput);
         ordersInputValidator.validate(userInput);
         validateEachOrder(userInput);
         return parseToOrderMap(userInput);
     }
 
-    private void checkLengthIsUnderUpperLimit(final String userInput) {
+    private void checkDayLengthIsUnderUpperLimit(final String userInput) {
         if (userInput.length() > APPLICATION_MAX_INPUT_LENGTH.getValue()) {
-            throw BasicInputException.of(TOO_LONG_WITH_BLANKS.getMessage());
+            throw BasicInputException.of(String.format(TOO_LONG_WITH_BLANKS.getMessage(), DAY_SYMBOL.getSymbol()));
+        }
+    }
+
+    private void checkOrdersLengthIsUnderUpperLimit(final String userInput) {
+        if (userInput.length() > APPLICATION_MAX_INPUT_LENGTH.getValue()) {
+            throw BasicInputException.of(String.format(TOO_LONG_WITH_BLANKS.getMessage(), ORDER_SYMBOL.getSymbol()));
         }
     }
 

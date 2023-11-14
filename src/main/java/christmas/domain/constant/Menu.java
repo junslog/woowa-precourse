@@ -5,9 +5,7 @@ import static christmas.domain.constant.FoodType.BEVERAGE;
 import static christmas.domain.constant.FoodType.DESSERT;
 import static christmas.domain.constant.FoodType.MAIN;
 
-import christmas.domain.exception.InvalidDayException;
 import christmas.domain.exception.InvalidMenuException;
-import christmas.domain.exception.message.InvalidDayExceptionMessage;
 import christmas.domain.exception.message.InvalidMenuExceptionMessage;
 import java.util.Arrays;
 
@@ -21,12 +19,12 @@ public enum Menu {
     SEAFOOD_PASTA("해산물파스타", 35_000, MAIN),
     CHRISTMAS_PASTA("크리스마스파스타", 25_000, MAIN),
 
-    CHOCHLATE_CAKE("초코케이크", 15_000, DESSERT),
+    CHOCOLATE_CAKE("초코케이크", 15_000, DESSERT),
     ICE_CREAM("아이스크림", 5000, DESSERT),
 
     ZERO_COKE("제로콜라", 3000, BEVERAGE),
     RED_WINE("레드와인", 60_000, BEVERAGE),
-    CAHAMPAGNE("샴페인", 25_000, BEVERAGE);
+    CHAMPAGNE("샴페인", 25_000, BEVERAGE);
 
     private final String name;
     private final int price;
@@ -60,6 +58,4 @@ public enum Menu {
                 .findFirst()
                 .orElseThrow(() -> InvalidMenuException.of(InvalidMenuExceptionMessage.NOT_EXISTING_MENU.getMessage()));
     }
-
-    private
 }

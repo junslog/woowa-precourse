@@ -1,13 +1,12 @@
 package christmas.view.input.exception.message;
 
 import static christmas.global.ApplicationConstant.ERROR_PREFIX;
-import static christmas.view.input.constant.InputNumberConstant.APPLICATION_MAX_INPUT_LENGTH;
 
 public enum BasicInputExceptionMessage {
     TOO_LONG_WITH_BLANKS(
-            ERROR_PREFIX + "제한 글자 입력을 초과했습니다. 다시 입력해 주세요.(공백 포함 최대" + APPLICATION_MAX_INPUT_LENGTH + "글자 입력 가능)"),
-    EMPTY_FORMAT(ERROR_PREFIX + "비어있는 %s 입력값입니다. 다시 입력해 주세요."),
-    TOO_LONG_FORMAT(ERROR_PREFIX + "제한 글자 입력을 초과했습니다. 다시 입력해 주세요.(공백 제외 최대 %d글자 입력 가능)");
+            ERROR_PREFIX + "유효하지 않은 %s입니다. 다시 입력해 주세요."),
+    EMPTY_FORMAT(ERROR_PREFIX + "유효하지 않은 %s입니다. 다시 입력해 주세요."),
+    TOO_LONG_FORMAT(ERROR_PREFIX + "유효하지 않은 %s입니다. 다시 입력해 주세요.");
 
     private final String message;
 
