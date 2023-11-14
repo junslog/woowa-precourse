@@ -14,35 +14,31 @@ public enum EventBadge {
         this.minimumTotalBenefitedPrice = minimumTotalBenefitedPrice;
     }
 
-    public static EventBadge getBadgeByBenefitedPrice(final int totalBenefitedPrice) {
+    public static String getBadgeNameByBenefitedPrice(final int totalBenefitedPrice) {
         if (isNone(totalBenefitedPrice)) {
-            return NONE;
+            return NONE.name;
         }
         if (isStar(totalBenefitedPrice)) {
-            return STAR;
+            return STAR.name;
         }
         if (isTree(totalBenefitedPrice)) {
-            return TREE;
+            return TREE.name;
         }
-        return SANTA;
+        return SANTA.name;
     }
 
     private static boolean isNone(final int totalBenefitedPrice) {
         return totalBenefitedPrice >= NONE.minimumTotalBenefitedPrice
-                || totalBenefitedPrice < STAR.minimumTotalBenefitedPrice;
+                && totalBenefitedPrice < STAR.minimumTotalBenefitedPrice;
     }
 
     private static boolean isStar(final int totalBenefitedPrice) {
         return totalBenefitedPrice >= STAR.minimumTotalBenefitedPrice
-                || totalBenefitedPrice < TREE.minimumTotalBenefitedPrice;
+                && totalBenefitedPrice < TREE.minimumTotalBenefitedPrice;
     }
 
     private static boolean isTree(final int totalBenefitedPrice) {
         return totalBenefitedPrice >= TREE.minimumTotalBenefitedPrice
-                || totalBenefitedPrice < SANTA.minimumTotalBenefitedPrice;
-    }
-
-    public String getName() {
-        return name;
+                && totalBenefitedPrice < SANTA.minimumTotalBenefitedPrice;
     }
 }

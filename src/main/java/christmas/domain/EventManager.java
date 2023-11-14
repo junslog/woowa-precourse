@@ -7,6 +7,7 @@ import static christmas.domain.constant.event.Promotion.SPECIAL_PROMOTION;
 import static christmas.domain.constant.event.Promotion.WEEKDAY_PROMOTION;
 import static christmas.domain.constant.event.Promotion.WEEKEND_PROMOTION;
 
+import christmas.domain.constant.event.EventBadge;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -128,5 +129,9 @@ public class EventManager {
             return calculateTotalBenefitedAmount() - calculateGiftPromotionBenefitAmount();
         }
         return calculateTotalBenefitedAmount();
+    }
+
+    public String issueEventBadge() {
+        return EventBadge.getBadgeNameByBenefitedPrice(calculateTotalBenefitedAmount());
     }
 }

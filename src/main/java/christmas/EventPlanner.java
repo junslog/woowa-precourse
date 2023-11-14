@@ -39,6 +39,7 @@ public class EventPlanner {
         printBenefitsDetails(eventManager);
         printTotalBenefitedAmount(eventManager);
         printEstimatedAmountWithDiscount(eventManager);
+        printEventBadge(eventManager);
     }
 
     private void printIntroMessage(ReservationDay reservationDay) {
@@ -68,5 +69,9 @@ public class EventPlanner {
     private void printEstimatedAmountWithDiscount(EventManager eventManager) {
         outputView.printEstimatedAmountWithDiscount(
                 eventManagerService.createEstimatedAmountWithDiscountDto(eventManager));
+    }
+
+    private void printEventBadge(EventManager eventManager) {
+        outputView.printEventBadge(eventManagerService.createEventBadgeDto(eventManager));
     }
 }

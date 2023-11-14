@@ -13,6 +13,7 @@ import static christmas.view.output.constant.OutputMessageConstant.INSERT_ORDERS
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_RESERVATION_DAY;
 import static christmas.view.output.constant.OutputSymbolConstant.BENEFITS_DETAILS;
 import static christmas.view.output.constant.OutputSymbolConstant.ESTIMATED_AMOUNT_WITH_DISCOUNT;
+import static christmas.view.output.constant.OutputSymbolConstant.EVENT_BADGE;
 import static christmas.view.output.constant.OutputSymbolConstant.GIFT_MENU;
 import static christmas.view.output.constant.OutputSymbolConstant.NEW_LINE;
 import static christmas.view.output.constant.OutputSymbolConstant.NO_BENEFITS;
@@ -23,6 +24,7 @@ import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_BENEFITE
 
 import christmas.dto.BenefitsDetailsDto;
 import christmas.dto.EstimatedAmountWithDiscountDto;
+import christmas.dto.EventBadgeDto;
 import christmas.dto.EventBenefitsPreviewDto;
 import christmas.dto.GiftDto;
 import christmas.dto.OrderedMenusDto;
@@ -126,6 +128,13 @@ public class OutputView {
         printFormatted(ESTIMATED_AMOUNT_WITH_DISCOUNT_PRINT_FORMAT.getFormat(),
                 formatPrice(estimatedAmountWithDiscountDto.getAmount()));
         printLine();
+    }
+
+    public void printEventBadge(EventBadgeDto eventBadgeDto) {
+        printLine();
+        print(EVENT_BADGE.getSymbol());
+        printLine();
+        print(eventBadgeDto.getBadgeName());
     }
 
     public void printLine() {

@@ -8,6 +8,7 @@ import christmas.domain.Orders;
 import christmas.domain.constant.orders.Menu;
 import christmas.dto.BenefitsDetailsDto;
 import christmas.dto.EstimatedAmountWithDiscountDto;
+import christmas.dto.EventBadgeDto;
 import christmas.dto.GiftDto;
 import christmas.dto.TotalBenefitedAmountDto;
 import java.util.LinkedHashMap;
@@ -36,5 +37,9 @@ public class EventManagerService {
 
     public EstimatedAmountWithDiscountDto createEstimatedAmountWithDiscountDto(EventManager eventManager) {
         return EstimatedAmountWithDiscountDto.from(eventManager.calculateEstimatedOrdersAmountWithDiscount());
+    }
+
+    public EventBadgeDto createEventBadgeDto(EventManager eventManager) {
+        return EventBadgeDto.from(eventManager.issueEventBadge());
     }
 }
