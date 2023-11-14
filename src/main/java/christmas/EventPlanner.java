@@ -25,5 +25,18 @@ public class EventPlanner {
     public void execute() {
         DecemberDay day = dayController.insertDay();
         Orders orders = ordersController.insertOrders();
+        printResult(day, orders);
+    }
+
+    private void printResult(final DecemberDay day, final Orders orders) {
+        printIntroMessage(day);
+    }
+
+    private void printIntroMessage(final DecemberDay day) {
+        outputView.announceIntroMessage(getDay(day));
+    }
+
+    private int getDay(DecemberDay day) {
+        return day.getDay();
     }
 }
