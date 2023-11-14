@@ -44,6 +44,10 @@ public enum Menu {
         return price;
     }
 
+    public FoodType getFoodType() {
+        return foodType;
+    }
+
     public boolean isWeekDayPromotionApplicable() {
         return foodType.isWeekdayPromotionApplicable();
     }

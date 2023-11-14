@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.domain.constant.FoodType;
 import christmas.domain.constant.Menu;
 import christmas.domain.exception.InvalidOrdersException;
 
@@ -22,5 +23,9 @@ public class Order {
 
     public int getMenuCount() {
         return count;
+    }
+
+    public FoodType getFoodType() {
+        return menu.getFoodType();
     }
 }
