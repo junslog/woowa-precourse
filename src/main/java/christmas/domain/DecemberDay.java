@@ -5,6 +5,7 @@ import static christmas.domain.constant.DayConstant.DECEMBER_FIRST_DAY;
 import static christmas.domain.constant.DayConstant.DECEMBER_LAST_DAY;
 import static christmas.domain.constant.DayConstant.FRIDAY_VALUE;
 import static christmas.domain.constant.DayConstant.SATURDAY_VALUE;
+import static christmas.domain.constant.DayConstant.SUNDAY_VALUE;
 import static christmas.domain.constant.DayConstant.WEEKDAY_LENGTH;
 
 import christmas.domain.exception.InvalidDayException;
@@ -38,8 +39,8 @@ public class DecemberDay extends DayPerMonth {
                 || day % WEEKDAY_LENGTH.getValue() == SATURDAY_VALUE.getValue();
     }
 
-    private static boolean judgeHasStar(final int day) {
-        return true;
+    public boolean isSpecialPromotionApplicable() {
+        return day % WEEKDAY_LENGTH.getValue() == SUNDAY_VALUE.getValue() || day == DECEMBER_CHRISTMAS_DAY.getValue();
     }
 
     @Override
