@@ -9,7 +9,7 @@ public class Orders {
         this.orders = orders;
     }
 
-    private static Orders from(List<Order> orders) {
+    public static Orders from(List<Order> orders) {
         validate(orders);
         return new Orders(orders);
     }

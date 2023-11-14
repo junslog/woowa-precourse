@@ -3,6 +3,8 @@ package christmas.domain;
 import static christmas.domain.constant.DayConstant.DECEMBER_FIRST_DAY;
 import static christmas.domain.constant.DayConstant.DECEMBER_LAST_DAY;
 
+import christmas.domain.exception.InvalidDayException;
+
 public class DecemberDay extends DayPerMonth {
     private final boolean isChristmasPromotionApplicable;
     private final boolean isWeekend;
@@ -16,7 +18,7 @@ public class DecemberDay extends DayPerMonth {
         this.hasStar = hasStar;
     }
 
-    public static DecemberDay from(final int day) {
+    public static DecemberDay from(final int day) throws InvalidDayException {
         return new DecemberDay(day, judgeIsChristmasPromotionApplicable(day), judgeIsWeekend(day), judgeHasStar(day));
     }
 

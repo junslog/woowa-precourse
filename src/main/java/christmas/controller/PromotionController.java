@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.domain.DecemberDay;
 import christmas.domain.Orders;
 import christmas.domain.exception.InvalidDayException;
+import christmas.domain.exception.InvalidMenuException;
 import christmas.service.DayService;
 import christmas.service.OrdersService;
 import christmas.view.input.InputView;
@@ -50,7 +51,7 @@ public class PromotionController {
         try {
             Map<String, Integer> orders = askToInsertOrders();
             return ordersService.createOrders(orders);
-        } catch (BasicInputException | OrdersInputException e) {
+        } catch (BasicInputException | OrdersInputException | InvalidMenuException e) {
             outputView.printErrorMessage(e.getMessage());
             return insertOrders();
         }
