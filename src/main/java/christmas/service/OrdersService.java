@@ -8,10 +8,13 @@ import java.util.stream.Collectors;
 
 public class OrdersService {
     public Orders createOrders(Map<String, Integer> orders) {
-        List<Order> menusAndCounts = orders.entrySet().stream()
+        return Orders.from(makeOrders(orders));
+    }
+
+    private List<Order> makeOrders(Map<String, Integer> orders) {
+        return orders.entrySet().stream()
                 .map(order -> createOrder(order.getKey(), order.getValue()))
                 .collect(Collectors.toList());
-        return Orders.from(menusAndCounts);
     }
 
     private Order createOrder(final String menuName, final int menuCount) {
