@@ -41,8 +41,9 @@ public class InputParser {
     public Map<String, Integer> parseOrders(String userInput) {
         checkOrdersLengthIsUnderUpperLimit(userInput);
         userInput = removeBlank(userInput);
-        ordersInputValidator.validate(userInput);
+        ordersInputValidator.preValidate(userInput);
         validateEachOrder(userInput);
+        ordersInputValidator.postValidate(userInput);
         return parseToOrderMap(userInput);
     }
 

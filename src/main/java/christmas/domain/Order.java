@@ -15,4 +15,8 @@ public class Order {
     public static Order of(final String menuName, final int count) throws InvalidMenuException {
         return new Order(Menu.searchByName(menuName), count);
     }
+
+    public String getMenuName() {
+        return menu.getName();
+    }
 }
