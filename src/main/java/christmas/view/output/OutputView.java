@@ -22,6 +22,7 @@ import christmas.dto.EventBenefitsPreviewDto;
 import christmas.dto.GiftDto;
 import christmas.dto.OrderedMenusDto;
 import christmas.dto.TotalAmountWithNoDiscountDto;
+import christmas.dto.TotalBenefitedAmountDto;
 import java.text.DecimalFormat;
 
 public class OutputView {
@@ -101,6 +102,10 @@ public class OutputView {
                     printLine();
                 }
         );
+    }
+
+    public void printTotalBenefitedAmount(TotalBenefitedAmountDto totalBenefitedAmountDto) {
+
     }
 
     public void printLine() {

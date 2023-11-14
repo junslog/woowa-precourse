@@ -37,6 +37,7 @@ public class EventPlanner {
         printTotalAmountWithNoDiscount(orders);
         printGiftMenu(orders);
         printBenefitsDetails(eventManager);
+        printTotalBenefitedAmount(eventManager);
     }
 
     private void printIntroMessage(ReservationDay reservationDay) {
@@ -57,5 +58,9 @@ public class EventPlanner {
 
     private void printBenefitsDetails(EventManager eventManager) {
         outputView.printBenefitsDetails(eventManagerService.createBenefitsDetailsDto(eventManager));
+    }
+
+    private void printTotalBenefitedAmount(EventManager eventManager) {
+        outputView.printTotalBenefitedAmount(eventManagerService.createTotalBenefitedAmountDto(eventManager));
     }
 }

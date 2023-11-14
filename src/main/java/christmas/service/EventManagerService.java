@@ -8,6 +8,7 @@ import christmas.domain.Orders;
 import christmas.domain.constant.orders.Menu;
 import christmas.dto.BenefitsDetailsDto;
 import christmas.dto.GiftDto;
+import christmas.dto.TotalBenefitedAmountDto;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,5 +27,9 @@ public class EventManagerService {
 
     public BenefitsDetailsDto createBenefitsDetailsDto(EventManager eventManager) {
         return BenefitsDetailsDto.from(eventManager.createBenefitsDetails());
+    }
+
+    public TotalBenefitedAmountDto createTotalBenefitedAmountDto(EventManager eventManager) {
+        return TotalBenefitedAmountDto.from(eventManager.calculateTotalBenefitedAmount());
     }
 }
