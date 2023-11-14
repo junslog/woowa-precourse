@@ -22,40 +22,40 @@ public class OrderInputValidator extends BasicValidator {
         this.menuCountInputValidator = new MenuCountInputValidator();
     }
 
-    public void validate(final String order) {
-        super.validate(order, ORDER_SYMBOL.getSymbol(), ORDER_MAX_INPUT_LENGTH.getValue());
-        validateContainingDelimiter(order);
-        validateNotEndsWithDelimiter(order);
-        validateMenu(splitToMenu(order));
+    public void validate(final String orderInput) {
+        super.validate(orderInput, ORDER_SYMBOL.getSymbol(), ORDER_MAX_INPUT_LENGTH.getValue());
+        validateContainingDelimiter(orderInput);
+        validateNotEndsWithDelimiter(orderInput);
+        validateMenu(splitToMenuInput(orderInput));
     }
 
-    private void validateContainingDelimiter(final String order) {
-        if (!containsDelimiter(order)) {
+    private void validateContainingDelimiter(final String orderInput) {
+        if (!containsDelimiter(orderInput)) {
             throw OrdersInputException.of(INVALID_ORDER_FORMAT.getMessage());
         }
     }
 
-    private boolean containsDelimiter(final String order) {
-        return order.contains(ORDER_DELIMITER.getSymbol());
+    private boolean containsDelimiter(final String orderInput) {
+        return orderInput.contains(ORDER_DELIMITER.getSymbol());
     }
 
-    private void validateNotEndsWithDelimiter(final String order) {
-        if (endsWithDelimiter(order)) {
+    private void validateNotEndsWithDelimiter(final String orderInput) {
+        if (endsWithDelimiter(orderInput)) {
             throw OrdersInputException.of(EMPTY_MENU_COUNT.getMessage());
         }
     }
 
-    private boolean endsWithDelimiter(final String order) {
-        return order.endsWith(ORDER_DELIMITER.getSymbol());
+    private boolean endsWithDelimiter(final String orderInput) {
+        return orderInput.endsWith(ORDER_DELIMITER.getSymbol());
     }
 
-    private List<String> splitToMenu(final String order) {
-        return Arrays.stream(order.split(ORDER_DELIMITER.getSymbol()))
+    private List<String> splitToMenuInput(final String orderInput) {
+        return Arrays.stream(orderInput.split(ORDER_DELIMITER.getSymbol()))
                 .collect(Collectors.toList());
     }
 
-    private void validateMenu(List<String> menu) {
-        menuNameInputValidator.validate(menu.get(MENU_NAME_INDEX.getValue()));
-        menuCountInputValidator.validate(menu.get(MENU_COUNT_INDEX.getValue()));
+    private void validateMenu(List<String> menuInput) {
+        menuNameInputValidator.validate(menuInput.get(MENU_NAME_INDEX.getValue()));
+        menuCountInputValidator.validate(menuInput.get(MENU_COUNT_INDEX.getValue()));
     }
 }

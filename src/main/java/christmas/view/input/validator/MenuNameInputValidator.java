@@ -4,7 +4,7 @@ import static christmas.view.input.constant.InputNumberConstant.MENU_NAME_MAX_IN
 import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 
 public class MenuNameInputValidator extends BasicValidator {
-    public void validate(final String name) {
-        super.validate(name, ORDER_SYMBOL.getSymbol(), MENU_NAME_MAX_INPUT_LENGTH.getValue());
+    public void validate(final String menuNameInput) {
+        super.validate(menuNameInput, ORDER_SYMBOL.getSymbol(), MENU_NAME_MAX_INPUT_LENGTH.getValue());
     }
 }

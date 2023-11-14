@@ -10,30 +10,30 @@ import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.DayInputException;
 
 public class DayInputValidator extends BasicValidator implements PositiveIntegerCheckable {
-    public void validate(final String day) throws BasicInputException, DayInputException {
-        super.validate(day, DAY_SYMBOL.getSymbol(), DAY_MAX_INPUT_LENGTH.getValue());
-        validateNumeric(day);
-        validatePositive(day);
+    public void validate(final String dayInput) throws BasicInputException, DayInputException {
+        super.validate(dayInput, DAY_SYMBOL.getSymbol(), DAY_MAX_INPUT_LENGTH.getValue());
+        validateNumeric(dayInput);
+        validatePositive(dayInput);
     }
 
     @Override
-    public void validateNumeric(final String userInput) {
+    public void validateNumeric(final String dayInput) {
         try {
-            parseToInt(userInput);
+            parseToInt(dayInput);
         } catch (NumberFormatException e) {
             throw DayInputException.of(NOT_NUMERIC_TYPE.getMessage());
         }
     }
 
     @Override
-    public void validatePositive(final String userInput) {
-        int day = parseToInt(userInput);
+    public void validatePositive(final String dayInput) {
+        int day = parseToInt(dayInput);
         if (day < POSITIVE_BOUNDARY_VALUE.getValue()) {
             throw DayInputException.of(NOT_POSITIVE.getMessage());
         }
     }
 
-    private int parseToInt(final String userInput) {
-        return Integer.parseInt(userInput);
+    private int parseToInt(final String dayInput) {
+        return Integer.parseInt(dayInput);
     }
 }
