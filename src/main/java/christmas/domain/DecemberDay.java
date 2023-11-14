@@ -25,6 +25,10 @@ public class DecemberDay extends DayPerMonth {
         return day >= DECEMBER_FIRST_DAY.getValue() && day <= DECEMBER_CHRISTMAS_DAY.getValue();
     }
 
+    public boolean isWeekdayPromotionApplicable() {
+        return !isWeekend();
+    }
+
     public boolean isWeekendPromotionApplicable() {
         return isWeekend();
     }
