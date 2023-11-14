@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.domain.Orders;
 import christmas.domain.exception.InvalidOrdersException;
+import christmas.dto.OrderedMenusDto;
 import christmas.service.OrdersService;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.BasicInputException;
@@ -33,5 +34,9 @@ public class OrdersController {
     private Map<String, Integer> askToInsertOrders() {
         outputView.askToInsertOrders();
         return inputView.getOrders();
+    }
+
+    public OrderedMenusDto createOrderedMenusDto(Orders orders) {
+        return ordersService.createOrdersHistoryDto(orders);
     }
 }

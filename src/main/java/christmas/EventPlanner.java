@@ -30,6 +30,7 @@ public class EventPlanner {
 
     private void printResult(final DecemberDay day, final Orders orders) {
         printIntroMessage(day);
+        printOrderedMenus(orders);
     }
 
     private void printIntroMessage(final DecemberDay day) {
@@ -38,5 +39,9 @@ public class EventPlanner {
 
     private int getDay(DecemberDay day) {
         return day.getDay();
+    }
+
+    public void printOrderedMenus(final Orders orders) {
+        outputView.printOrderedMenus(ordersController.createOrderedMenusDto(orders));
     }
 }

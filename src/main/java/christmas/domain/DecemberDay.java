@@ -43,6 +43,10 @@ public class DecemberDay extends DayPerMonth {
         return day % WEEKDAY_LENGTH.getValue() == SUNDAY_VALUE.getValue() || day == DECEMBER_CHRISTMAS_DAY.getValue();
     }
 
+    public int getDay() {
+        return day;
+    }
+
     @Override
     protected boolean isInAppropriateRange(final int day) {
         return day >= DECEMBER_FIRST_DAY.getValue() && day <= DECEMBER_LAST_DAY.getValue();

@@ -63,4 +63,8 @@ public class Orders {
     public boolean isGiftEventApplicable() {
         return calculateTotalAmountWithoutDiscount() >= GIFT_EVENT_APPLICABLE_AMOUNT.getValue();
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
 }

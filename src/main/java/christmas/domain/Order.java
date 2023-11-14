@@ -17,6 +17,10 @@ public class Order {
         return new Order(Menu.searchByName(menuName), count);
     }
 
+    public String getMenuName() {
+        return menu.getName();
+    }
+
     public int getMenuCount() {
         return count;
     }
