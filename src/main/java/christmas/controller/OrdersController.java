@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.domain.Orders;
 import christmas.domain.exception.InvalidOrdersException;
 import christmas.dto.OrderedMenusDto;
+import christmas.dto.TotalAmountWithNoDiscountDto;
 import christmas.service.OrdersService;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.BasicInputException;
@@ -38,5 +39,9 @@ public class OrdersController {
 
     public OrderedMenusDto createOrderedMenusDto(Orders orders) {
         return ordersService.createOrdersHistoryDto(orders);
+    }
+
+    public TotalAmountWithNoDiscountDto createTotalAmountWithNoDiscountDto(Orders orders) {
+        return ordersService.createTotalAmountWithNoDiscountDto(orders);
     }
 }

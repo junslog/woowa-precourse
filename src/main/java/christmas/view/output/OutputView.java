@@ -7,8 +7,10 @@ import static christmas.view.output.constant.OutputMessageConstant.INSERT_ORDERS
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_RESERVATION_DAY;
 import static christmas.view.output.constant.OutputSymbolConstant.NEW_LINE;
 import static christmas.view.output.constant.OutputSymbolConstant.ORDERED_MENUS;
+import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_AMOUNT_WITH_NO_DISCOUNT;
 
 import christmas.dto.OrderedMenusDto;
+import christmas.dto.TotalAmountWithNoDiscountDto;
 
 public class OutputView {
     public void printGreetingMessage() {
@@ -27,7 +29,7 @@ public class OutputView {
     }
 
     public void announceIntroMessage(final int day) {
-        print(String.format(SHOW_RESULT_INTRO_FORMAT.getFormat(), day));
+        printFormatted(SHOW_RESULT_INTRO_FORMAT.getFormat(), day);
         printLine();
         printLine();
     }
@@ -39,7 +41,13 @@ public class OutputView {
     }
 
     private void printOrderedMenu(final String menuName, final int menuCount) {
-        print(String.format(ORDERED_MENUS_PRINT_FORMAT.getFormat(), menuName, menuCount));
+        printFormatted(ORDERED_MENUS_PRINT_FORMAT.getFormat(), menuName, menuCount);
+        printLine();
+    }
+
+    public void printTotalAmountWithNoDiscount(TotalAmountWithNoDiscountDto totalAmountWithNoDiscountDto) {
+        printLine();
+        print(TOTAL_AMOUNT_WITH_NO_DISCOUNT.getSymbol());
         printLine();
     }
 
@@ -52,7 +60,11 @@ public class OutputView {
         printLine();
     }
 
-    private <T> void print(final T message) {
+    private void print(final String message) {
         System.out.print(message);
+    }
+
+    private void printFormatted(final String format, final Object... args) {
+        print(String.format(format, args));
     }
 }

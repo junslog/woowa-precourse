@@ -2,7 +2,8 @@ package christmas.view.output.constant;
 
 public enum OutputSymbolConstant {
     NEW_LINE(System.lineSeparator()),
-    ORDERED_MENUS("<주문 메뉴>");
+    ORDERED_MENUS("<주문 메뉴>"),
+    TOTAL_AMOUNT_WITH_NO_DISCOUNT("<할인 전 총주문 금액>");
 
     private final String symbol;
 

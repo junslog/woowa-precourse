@@ -50,18 +50,18 @@ public class Orders {
                 .allMatch(order -> order.getFoodType() == FoodType.BEVERAGE);
     }
 
-    public int calculateTotalAmountWithoutDiscount() {
+    public int calculateTotalAmountWithNoDiscount() {
         return orders.stream()
                 .mapToInt(Order::getTotalPrice)
                 .sum();
     }
 
     public boolean isEventApplicable() {
-        return calculateTotalAmountWithoutDiscount() >= EVENT_APPLICABLE_AMOUNT.getValue();
+        return calculateTotalAmountWithNoDiscount() >= EVENT_APPLICABLE_AMOUNT.getValue();
     }
 
     public boolean isGiftEventApplicable() {
-        return calculateTotalAmountWithoutDiscount() >= GIFT_EVENT_APPLICABLE_AMOUNT.getValue();
+        return calculateTotalAmountWithNoDiscount() >= GIFT_EVENT_APPLICABLE_AMOUNT.getValue();
     }
 
     public List<Order> getOrders() {

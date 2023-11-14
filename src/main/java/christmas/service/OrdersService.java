@@ -3,6 +3,7 @@ package christmas.service;
 import christmas.domain.Order;
 import christmas.domain.Orders;
 import christmas.dto.OrderedMenusDto;
+import christmas.dto.TotalAmountWithNoDiscountDto;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -32,5 +33,9 @@ public class OrdersService {
                         Order::getMenuName,
                         Order::getMenuCount
                 ));
+    }
+
+    public TotalAmountWithNoDiscountDto createTotalAmountWithNoDiscountDto(Orders orders) {
+        return TotalAmountWithNoDiscountDto.from(orders.calculateTotalAmountWithNoDiscount());
     }
 }
