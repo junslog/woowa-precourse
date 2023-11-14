@@ -7,7 +7,6 @@ import static christmas.domain.constant.event.Promotion.SPECIAL_PROMOTION;
 import static christmas.domain.constant.event.Promotion.WEEKDAY_PROMOTION;
 import static christmas.domain.constant.event.Promotion.WEEKEND_PROMOTION;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -115,7 +114,7 @@ public class EventManager {
     }
 
     public int calculateTotalBenefitedAmount() {
-        return makeBenefitsDetails(new HashMap<>()).values().stream()
+        return createBenefitsDetails().values().stream()
                 .mapToInt(Integer::intValue)
                 .sum();
     }

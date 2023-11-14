@@ -8,7 +8,7 @@ public class TotalBenefitedAmountDto {
     }
 
     public static TotalBenefitedAmountDto from(final int amount) {
-        return new TotalBenefitedAmountDto(amount);
+        return new TotalBenefitedAmountDto(-amount);
     }
 
     public int getAmount() {

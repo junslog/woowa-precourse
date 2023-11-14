@@ -6,11 +6,11 @@ public enum ChristmasPromotion {
     CHRISTMAS_D_DAY_PROMOTION("크리스마스 디데이 할인", 900);
 
     private final String name;
-    private final int benefitAmount;
+    private final int startBenefitAmount;
 
-    ChristmasPromotion(final String name, final int benefitAmount) {
+    ChristmasPromotion(final String name, final int startBenefitAmount) {
         this.name = name;
-        this.benefitAmount = benefitAmount;
+        this.startBenefitAmount = startBenefitAmount;
     }
 
     public String getName() {
@@ -18,6 +18,6 @@ public enum ChristmasPromotion {
     }
 
     public int getBenefitAmount(final int day) {
-        return benefitAmount + day * CHRISTMAS_PROMOTION_INCREASING_AMOUNT.getValue();
+        return startBenefitAmount + day * CHRISTMAS_PROMOTION_INCREASING_AMOUNT.getValue();
     }
 }

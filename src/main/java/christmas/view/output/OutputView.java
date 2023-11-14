@@ -6,6 +6,7 @@ import static christmas.view.output.constant.OutputFormatConstant.ORDERED_MENUS_
 import static christmas.view.output.constant.OutputFormatConstant.PRICE_FORMAT_STYLE;
 import static christmas.view.output.constant.OutputFormatConstant.SHOW_RESULT_INTRO_FORMAT;
 import static christmas.view.output.constant.OutputFormatConstant.TOTAL_AMOUNT_WITH_NO_DISCOUNT_PRINT_FORMAT;
+import static christmas.view.output.constant.OutputFormatConstant.TOTAL_BENEFITED_AMOUNT_PRINT_FORMAT;
 import static christmas.view.output.constant.OutputMessageConstant.GREETING;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_ORDERS;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_RESERVATION_DAY;
@@ -16,6 +17,7 @@ import static christmas.view.output.constant.OutputSymbolConstant.NO_BENEFITS;
 import static christmas.view.output.constant.OutputSymbolConstant.NO_GIFT;
 import static christmas.view.output.constant.OutputSymbolConstant.ORDERED_MENUS;
 import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_AMOUNT_WITH_NO_DISCOUNT;
+import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_BENEFITED_AMOUNT;
 
 import christmas.dto.BenefitsDetailsDto;
 import christmas.dto.EventBenefitsPreviewDto;
@@ -96,6 +98,7 @@ public class OutputView {
     private void printBenefitNamesAndAmount(BenefitsDetailsDto benefitsDetailsDto) {
         if (benefitsDetailsDto.isEmpty()) {
             print(NO_BENEFITS.getSymbol());
+            printLine();
         }
         benefitsDetailsDto.getBenefitsDetails().forEach((benefitName, benefitAmount) -> {
                     printFormatted(BENEFITS_DETAILS_PRINT_FORMAT.getFormat(), benefitName, formatPrice(benefitAmount));
@@ -105,7 +108,11 @@ public class OutputView {
     }
 
     public void printTotalBenefitedAmount(TotalBenefitedAmountDto totalBenefitedAmountDto) {
-
+        printLine();
+        print(TOTAL_BENEFITED_AMOUNT.getSymbol());
+        printLine();
+        printFormatted(TOTAL_BENEFITED_AMOUNT_PRINT_FORMAT.getFormat(),
+                formatPrice(totalBenefitedAmountDto.getAmount()));
     }
 
     public void printLine() {
