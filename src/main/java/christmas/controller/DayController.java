@@ -1,7 +1,8 @@
 package christmas.controller;
 
-import christmas.domain.DecemberDay;
+import christmas.domain.ReservationDay;
 import christmas.domain.exception.InvalidDayException;
+import christmas.dto.EventBenefitsPreviewDto;
 import christmas.service.DayService;
 import christmas.view.input.InputView;
 import christmas.view.input.exception.BasicInputException;
@@ -19,7 +20,7 @@ public class DayController {
         dayService = new DayService();
     }
 
-    public DecemberDay insertDay() {
+    public ReservationDay insertDay() {
         try {
             int reservationDay = askToInsertReservationDay();
             return dayService.createDay(reservationDay);
@@ -32,5 +33,9 @@ public class DayController {
     private int askToInsertReservationDay() throws BasicInputException, DayInputException {
         outputView.askToInsertReservationDay();
         return inputView.getDay();
+    }
+
+    public EventBenefitsPreviewDto createEventBenefitsPreviousDto(ReservationDay day) {
+        return dayService.createEvenetBenefitsPreviewDto(day);
     }
 }

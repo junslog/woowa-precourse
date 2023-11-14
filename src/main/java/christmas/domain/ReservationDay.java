@@ -10,16 +10,16 @@ import static christmas.domain.constant.DayConstant.WEEKDAY_LENGTH;
 
 import christmas.domain.exception.InvalidDayException;
 
-public class DecemberDay extends DayPerMonth {
+public class ReservationDay extends DayPerMonth {
     private final int day;
 
-    private DecemberDay(final int day) {
+    private ReservationDay(final int day) {
         validate(day);
         this.day = day;
     }
 
-    public static DecemberDay from(final int day) throws InvalidDayException {
-        return new DecemberDay(day);
+    public static ReservationDay from(final int day) throws InvalidDayException {
+        return new ReservationDay(day);
     }
 
     public boolean isChristmasPromotionApplicable() {

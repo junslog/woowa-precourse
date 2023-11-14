@@ -2,8 +2,8 @@ package christmas;
 
 import christmas.controller.DayController;
 import christmas.controller.OrdersController;
-import christmas.domain.DecemberDay;
 import christmas.domain.Orders;
+import christmas.domain.ReservationDay;
 import christmas.service.EventService;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
@@ -23,23 +23,19 @@ public class EventPlanner {
     }
 
     public void execute() {
-        DecemberDay day = dayController.insertDay();
+        ReservationDay day = dayController.insertDay();
         Orders orders = ordersController.insertOrders();
         printResult(day, orders);
     }
 
-    private void printResult(final DecemberDay day, final Orders orders) {
+    private void printResult(final ReservationDay day, final Orders orders) {
         printIntroMessage(day);
         printOrderedMenus(orders);
         printTotalAmountWithNoDiscount(orders);
     }
 
-    private void printIntroMessage(final DecemberDay day) {
-        outputView.announceIntroMessage(getDay(day));
-    }
-
-    private int getDay(DecemberDay day) {
-        return day.getDay();
+    private void printIntroMessage(final ReservationDay day) {
+        outputView.printIntroMessage(dayController.createEventBenefitsPreviousDto(day));
     }
 
     private void printOrderedMenus(final Orders orders) {

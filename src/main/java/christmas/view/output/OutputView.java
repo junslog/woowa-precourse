@@ -9,6 +9,7 @@ import static christmas.view.output.constant.OutputSymbolConstant.NEW_LINE;
 import static christmas.view.output.constant.OutputSymbolConstant.ORDERED_MENUS;
 import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_AMOUNT_WITH_NO_DISCOUNT;
 
+import christmas.dto.EventBenefitsPreviewDto;
 import christmas.dto.OrderedMenusDto;
 import christmas.dto.TotalAmountWithNoDiscountDto;
 
@@ -28,8 +29,8 @@ public class OutputView {
         printLine();
     }
 
-    public void announceIntroMessage(final int day) {
-        printFormatted(SHOW_RESULT_INTRO_FORMAT.getFormat(), day);
+    public void printIntroMessage(EventBenefitsPreviewDto eventBenefitsPreviewDto) {
+        printFormatted(SHOW_RESULT_INTRO_FORMAT.getFormat(), eventBenefitsPreviewDto.getDay());
         printLine();
         printLine();
     }
