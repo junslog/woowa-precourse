@@ -30,6 +30,7 @@ public class PromotionController {
         outputView.printGreetingMessage();
         DecemberDay day = insertDay();
         Orders orders = insertOrders();
+        System.out.println(orders.calculateTotalAmount());
     }
 
     private DecemberDay insertDay() {

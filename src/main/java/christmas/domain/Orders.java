@@ -47,4 +47,10 @@ public class Orders {
         return orders.stream()
                 .allMatch(order -> order.getFoodType() == FoodType.BEVERAGE);
     }
+
+    public int calculateTotalAmount() {
+        return orders.stream()
+                .mapToInt(Order::getTotalPrice)
+                .sum();
+    }
 }
