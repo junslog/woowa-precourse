@@ -118,4 +118,11 @@ public class EventManager {
                 .mapToInt(Integer::intValue)
                 .sum();
     }
+
+    public int calculateTotalDiscountedAmount() {
+        if (orders.isGiftEventApplicable()) {
+            return calculateTotalBenefitedAmount() - calculateGiftPromotionBenefitAmount();
+        }
+        return calculateTotalBenefitedAmount();
+    }
 }
