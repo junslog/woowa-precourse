@@ -1,6 +1,7 @@
 package christmas.view.output;
 
 import static christmas.view.output.constant.OutputFormatConstant.BENEFITS_DETAILS_PRINT_FORMAT;
+import static christmas.view.output.constant.OutputFormatConstant.ESTIMATED_AMOUNT_WITH_DISCOUNT_PRINT_FORMAT;
 import static christmas.view.output.constant.OutputFormatConstant.GIFT_PRINT_FORMAT;
 import static christmas.view.output.constant.OutputFormatConstant.ORDERED_MENUS_PRINT_FORMAT;
 import static christmas.view.output.constant.OutputFormatConstant.PRICE_FORMAT_STYLE;
@@ -11,6 +12,7 @@ import static christmas.view.output.constant.OutputMessageConstant.GREETING;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_ORDERS;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_RESERVATION_DAY;
 import static christmas.view.output.constant.OutputSymbolConstant.BENEFITS_DETAILS;
+import static christmas.view.output.constant.OutputSymbolConstant.ESTIMATED_AMOUNT_WITH_DISCOUNT;
 import static christmas.view.output.constant.OutputSymbolConstant.GIFT_MENU;
 import static christmas.view.output.constant.OutputSymbolConstant.NEW_LINE;
 import static christmas.view.output.constant.OutputSymbolConstant.NO_BENEFITS;
@@ -20,6 +22,7 @@ import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_AMOUNT_W
 import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_BENEFITED_AMOUNT;
 
 import christmas.dto.BenefitsDetailsDto;
+import christmas.dto.EstimatedAmountWithDiscountDto;
 import christmas.dto.EventBenefitsPreviewDto;
 import christmas.dto.GiftDto;
 import christmas.dto.OrderedMenusDto;
@@ -113,6 +116,16 @@ public class OutputView {
         printLine();
         printFormatted(TOTAL_BENEFITED_AMOUNT_PRINT_FORMAT.getFormat(),
                 formatPrice(totalBenefitedAmountDto.getAmount()));
+        printLine();
+    }
+
+    public void printEstimatedAmountWithDiscount(EstimatedAmountWithDiscountDto estimatedAmountWithDiscountDto) {
+        printLine();
+        print(ESTIMATED_AMOUNT_WITH_DISCOUNT.getSymbol());
+        printLine();
+        printFormatted(ESTIMATED_AMOUNT_WITH_DISCOUNT_PRINT_FORMAT.getFormat(),
+                formatPrice(estimatedAmountWithDiscountDto.getAmount()));
+        printLine();
     }
 
     public void printLine() {
