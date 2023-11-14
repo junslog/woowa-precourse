@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import christmas.domain.constant.Menu;
-import christmas.domain.exception.InvalidMenuException;
+import christmas.domain.exception.InvalidOrdersException;
 
 public class Order {
     private final Menu menu;
@@ -12,11 +12,15 @@ public class Order {
         this.count = count;
     }
 
-    public static Order of(final String menuName, final int count) throws InvalidMenuException {
+    public static Order of(final String menuName, final int count) throws InvalidOrdersException {
         return new Order(Menu.searchByName(menuName), count);
     }
 
     public String getMenuName() {
         return menu.getName();
+    }
+
+    public int getMenuCount() {
+        return count;
     }
 }

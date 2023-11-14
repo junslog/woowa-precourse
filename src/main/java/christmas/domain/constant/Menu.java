@@ -4,9 +4,9 @@ import static christmas.domain.constant.FoodType.APPETIZER;
 import static christmas.domain.constant.FoodType.BEVERAGE;
 import static christmas.domain.constant.FoodType.DESSERT;
 import static christmas.domain.constant.FoodType.MAIN;
-import static christmas.domain.exception.message.InvalidMenuExceptionMessage.NOT_EXISTING_MENU;
+import static christmas.domain.exception.message.InvalidOrdersExceptionMessage.NOT_EXISTING_MENU;
 
-import christmas.domain.exception.InvalidMenuException;
+import christmas.domain.exception.InvalidOrdersException;
 import java.util.Arrays;
 
 public enum Menu {
@@ -56,6 +56,6 @@ public enum Menu {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.name.equalsIgnoreCase(name))
                 .findFirst()
-                .orElseThrow(() -> InvalidMenuException.of(NOT_EXISTING_MENU.getMessage()));
+                .orElseThrow(() -> InvalidOrdersException.of(NOT_EXISTING_MENU.getMessage()));
     }
 }
