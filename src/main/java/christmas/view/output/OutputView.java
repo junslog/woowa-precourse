@@ -1,5 +1,6 @@
 package christmas.view.output;
 
+import static christmas.view.output.constant.OutputFormatConstant.BENEFITS_DETAILS_PRINT_FORMAT;
 import static christmas.view.output.constant.OutputFormatConstant.GIFT_PRINT_FORMAT;
 import static christmas.view.output.constant.OutputFormatConstant.ORDERED_MENUS_PRINT_FORMAT;
 import static christmas.view.output.constant.OutputFormatConstant.PRICE_FORMAT_STYLE;
@@ -8,8 +9,10 @@ import static christmas.view.output.constant.OutputFormatConstant.TOTAL_AMOUNT_W
 import static christmas.view.output.constant.OutputMessageConstant.GREETING;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_ORDERS;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_RESERVATION_DAY;
+import static christmas.view.output.constant.OutputSymbolConstant.BENEFITS_DETAILS;
 import static christmas.view.output.constant.OutputSymbolConstant.GIFT_MENU;
 import static christmas.view.output.constant.OutputSymbolConstant.NEW_LINE;
+import static christmas.view.output.constant.OutputSymbolConstant.NO_BENEFITS;
 import static christmas.view.output.constant.OutputSymbolConstant.NO_GIFT;
 import static christmas.view.output.constant.OutputSymbolConstant.ORDERED_MENUS;
 import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_AMOUNT_WITH_NO_DISCOUNT;
@@ -58,7 +61,7 @@ public class OutputView {
         printLine();
         print(TOTAL_AMOUNT_WITH_NO_DISCOUNT.getSymbol());
         printLine();
-        printFormattedWithPrice(TOTAL_AMOUNT_WITH_NO_DISCOUNT_PRINT_FORMAT.getFormat(),
+        printFormatted(TOTAL_AMOUNT_WITH_NO_DISCOUNT_PRINT_FORMAT.getFormat(),
                 formatPrice(totalAmountWithNoDiscountDto.getAmount()));
         printLine();
     }
@@ -73,6 +76,7 @@ public class OutputView {
     private void printGift(GiftDto giftDto) {
         if (giftDto.isEmpty()) {
             print(NO_GIFT.getSymbol());
+            printLine();
         }
         giftDto.getGift().forEach((giftName, giftCount) -> {
                     printFormatted(GIFT_PRINT_FORMAT.getFormat(), giftName, giftCount);
@@ -82,7 +86,21 @@ public class OutputView {
     }
 
     public void printBenefitsDetails(BenefitsDetailsDto benefitsDetailsDto) {
+        printLine();
+        print(BENEFITS_DETAILS.getSymbol());
+        printLine();
+        printBenefitNamesAndAmount(benefitsDetailsDto);
+    }
 
+    private void printBenefitNamesAndAmount(BenefitsDetailsDto benefitsDetailsDto) {
+        if (benefitsDetailsDto.isEmpty()) {
+            print(NO_BENEFITS.getSymbol());
+        }
+        benefitsDetailsDto.getBenefitsDetails().forEach((benefitName, benefitAmount) -> {
+                    printFormatted(BENEFITS_DETAILS_PRINT_FORMAT.getFormat(), benefitName, formatPrice(benefitAmount));
+                    printLine();
+                }
+        );
     }
 
     public void printLine() {
@@ -105,9 +123,5 @@ public class OutputView {
     private String formatPrice(final int price) {
         return new DecimalFormat(PRICE_FORMAT_STYLE.getFormat())
                 .format(price);
-    }
-
-    private void printFormattedWithPrice(final String format, final String formattedPrice, final Object... args) {
-        print(String.format(String.format(format, formattedPrice), args));
     }
 }

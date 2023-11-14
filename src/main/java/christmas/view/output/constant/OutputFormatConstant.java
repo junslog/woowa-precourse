@@ -7,7 +7,8 @@ public enum OutputFormatConstant {
     ORDERED_MENUS_PRINT_FORMAT("%s %d개"),
     TOTAL_AMOUNT_WITH_NO_DISCOUNT_PRINT_FORMAT("%s원"),
     PRICE_FORMAT_STYLE("###,###"),
-    GIFT_PRINT_FORMAT("%s %d개");
+    GIFT_PRINT_FORMAT("%s %d개"),
+    BENEFITS_DETAILS_PRINT_FORMAT("%s: -%s원");
 
     private final String format;
 

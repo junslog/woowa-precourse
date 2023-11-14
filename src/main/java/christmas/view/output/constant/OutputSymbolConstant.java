@@ -5,7 +5,9 @@ public enum OutputSymbolConstant {
     ORDERED_MENUS("<주문 메뉴>"),
     TOTAL_AMOUNT_WITH_NO_DISCOUNT("<할인 전 총주문 금액>"),
     GIFT_MENU("<증정 메뉴>"),
-    NO_GIFT("없음");
+    BENEFITS_DETAILS("<혜택 내역>"),
+    NO_GIFT("없음"),
+    NO_BENEFITS("없음");
     private final String symbol;
 
     OutputSymbolConstant(final String symbol) {

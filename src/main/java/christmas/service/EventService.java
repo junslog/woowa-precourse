@@ -16,7 +16,6 @@ import christmas.dto.GiftDto;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class EventService {
 
@@ -72,7 +71,8 @@ public class EventService {
     private int calculateWeekdayPromotionBenefitAmount(ReservationDay reservationDay, Orders orders) {
         int count = orders.getOrders().stream()
                 .filter(Order::isWeekdayPromotionApplicable)
-                .collect(Collectors.collectingAndThen(Collectors.counting(), Long::intValue));
+                .mapToInt(Order::getMenuCount)
+                .sum();
         return WEEKDAY_PROMOTION.getBenefitAmount() * count;
     }
 
@@ -87,7 +87,8 @@ public class EventService {
     private int calculateWeekendPromotionBenefitAmount(ReservationDay reservationDay, Orders orders) {
         int count = orders.getOrders().stream()
                 .filter(Order::isWeekendPromotionApplicable)
-                .collect(Collectors.collectingAndThen(Collectors.counting(), Long::intValue));
+                .mapToInt(Order::getMenuCount)
+                .sum();
         return WEEKEND_PROMOTION.getBenefitAmount() * count;
     }
 
