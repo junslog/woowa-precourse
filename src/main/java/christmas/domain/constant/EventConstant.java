@@ -2,7 +2,8 @@ package christmas.domain.constant;
 
 public enum EventConstant {
     EVENT_APPLICABLE_AMOUNT(10_000),
-    GIFT_EVENT_APPLICABLE_AMOUNT(120_000);
+    GIFT_EVENT_APPLICABLE_AMOUNT(120_000),
+    GIFT_CHAMPAGNE_COUNT(1);
 
     private final int value;
 

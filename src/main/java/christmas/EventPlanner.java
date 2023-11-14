@@ -32,6 +32,7 @@ public class EventPlanner {
         printIntroMessage(day);
         printOrderedMenus(orders);
         printTotalAmountWithNoDiscount(orders);
+        printGiftMenu(orders);
     }
 
     private void printIntroMessage(final ReservationDay day) {
@@ -44,5 +45,9 @@ public class EventPlanner {
 
     private void printTotalAmountWithNoDiscount(final Orders orders) {
         outputView.printTotalAmountWithNoDiscount(ordersController.createTotalAmountWithNoDiscountDto(orders));
+    }
+
+    private void printGiftMenu(final Orders orders) {
+        outputView.printGiftMenu(eventService.createGiftDto(orders));
     }
 }
