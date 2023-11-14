@@ -14,6 +14,7 @@ import static christmas.view.output.constant.OutputSymbolConstant.NO_GIFT;
 import static christmas.view.output.constant.OutputSymbolConstant.ORDERED_MENUS;
 import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_AMOUNT_WITH_NO_DISCOUNT;
 
+import christmas.dto.BenefitsDetailsDto;
 import christmas.dto.EventBenefitsPreviewDto;
 import christmas.dto.GiftDto;
 import christmas.dto.OrderedMenusDto;
@@ -78,6 +79,10 @@ public class OutputView {
                     printLine();
                 }
         );
+    }
+
+    public void printBenefitsDetails(BenefitsDetailsDto benefitsDetailsDto) {
+
     }
 
     public void printLine() {

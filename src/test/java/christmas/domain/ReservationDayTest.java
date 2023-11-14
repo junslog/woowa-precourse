@@ -3,8 +3,8 @@ package christmas.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import christmas.domain.exception.InvalidDayException;
-import christmas.domain.exception.message.InvalidDayExceptionMessage;
+import christmas.domain.exception.InvalidReservationDayException;
+import christmas.domain.exception.message.InvalidReservationDayExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,8 +17,8 @@ public class ReservationDayTest {
     @ValueSource(ints = {0, -1, -10, 300, 350, 500, 32})
     void 유효하지_않은_날짜_입력시_예외_발생(int day) {
         assertThatThrownBy(() -> ReservationDay.from(day))
-                .isInstanceOf(InvalidDayException.class)
-                .hasMessageContaining(InvalidDayExceptionMessage.NOT_IN_APPROPRIATE_RANGE.getMessage());
+                .isInstanceOf(InvalidReservationDayException.class)
+                .hasMessageContaining(InvalidReservationDayExceptionMessage.NOT_IN_APPROPRIATE_RANGE.getMessage());
     }
 
     @DisplayName("날짜를 입력하면 크리스마스 D-Day 프로모션이 적용 가능한지 여부를 판단 가능하다.")

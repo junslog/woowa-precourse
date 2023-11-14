@@ -13,8 +13,8 @@ public class InputView {
         inputParser = new InputParser();
     }
 
-    public int getDay() throws BasicInputException, DayInputException {
-        return inputParser.parseDay(readLine());
+    public int getReservationDay() throws BasicInputException, DayInputException {
+        return inputParser.parseReservationDay(readLine());
     }
 
     public Map<String, Integer> getOrders() {

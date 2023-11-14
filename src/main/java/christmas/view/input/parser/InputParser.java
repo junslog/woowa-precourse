@@ -31,7 +31,7 @@ public class InputParser {
         this.orderInputValidator = new OrderInputValidator();
     }
 
-    public int parseDay(String userInput) throws BasicInputException, DayInputException {
+    public int parseReservationDay(String userInput) throws BasicInputException, DayInputException {
         checkDayLengthIsUnderUpperLimit(userInput);
         userInput = removeBlank(userInput);
         dayInputValidator.validate(userInput);

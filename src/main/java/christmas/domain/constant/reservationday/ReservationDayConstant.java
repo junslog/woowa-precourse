@@ -1,6 +1,6 @@
-package christmas.domain.constant.day;
+package christmas.domain.constant.reservationday;
 
-public enum DayConstant {
+public enum ReservationDayConstant {
     DEFAULT_FIRST_DAY(1),
     DEFAULT_LAST_DAY(30),
     DECEMBER_FIRST_DAY(1),
@@ -13,7 +13,7 @@ public enum DayConstant {
 
     private final int value;
 
-    DayConstant(final int value) {
+    ReservationDayConstant(final int value) {
         this.value = value;
     }
 

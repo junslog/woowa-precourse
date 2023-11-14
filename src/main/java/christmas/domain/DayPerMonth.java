@@ -1,10 +1,10 @@
 package christmas.domain;
 
-import static christmas.domain.constant.day.DayConstant.DECEMBER_LAST_DAY;
-import static christmas.domain.constant.day.DayConstant.DEFAULT_FIRST_DAY;
-import static christmas.domain.exception.message.InvalidDayExceptionMessage.NOT_IN_APPROPRIATE_RANGE;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.DECEMBER_LAST_DAY;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.DEFAULT_FIRST_DAY;
+import static christmas.domain.exception.message.InvalidReservationDayExceptionMessage.NOT_IN_APPROPRIATE_RANGE;
 
-import christmas.domain.exception.InvalidDayException;
+import christmas.domain.exception.InvalidReservationDayException;
 
 public abstract class DayPerMonth {
     public DayPerMonth() {
@@ -12,7 +12,7 @@ public abstract class DayPerMonth {
 
     protected void validate(final int day) {
         if (!isInAppropriateRange(day)) {
-            throw InvalidDayException.of(NOT_IN_APPROPRIATE_RANGE.getMessage());
+            throw InvalidReservationDayException.of(NOT_IN_APPROPRIATE_RANGE.getMessage());
         }
     }
 

@@ -1,14 +1,14 @@
 package christmas.domain;
 
-import static christmas.domain.constant.day.DayConstant.DECEMBER_CHRISTMAS_DAY;
-import static christmas.domain.constant.day.DayConstant.DECEMBER_FIRST_DAY;
-import static christmas.domain.constant.day.DayConstant.DECEMBER_LAST_DAY;
-import static christmas.domain.constant.day.DayConstant.FRIDAY_VALUE;
-import static christmas.domain.constant.day.DayConstant.SATURDAY_VALUE;
-import static christmas.domain.constant.day.DayConstant.SUNDAY_VALUE;
-import static christmas.domain.constant.day.DayConstant.WEEKDAY_LENGTH;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.DECEMBER_CHRISTMAS_DAY;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.DECEMBER_FIRST_DAY;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.DECEMBER_LAST_DAY;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.FRIDAY_VALUE;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.SATURDAY_VALUE;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.SUNDAY_VALUE;
+import static christmas.domain.constant.reservationday.ReservationDayConstant.WEEKDAY_LENGTH;
 
-import christmas.domain.exception.InvalidDayException;
+import christmas.domain.exception.InvalidReservationDayException;
 
 public class ReservationDay extends DayPerMonth {
     private final int day;
@@ -18,7 +18,7 @@ public class ReservationDay extends DayPerMonth {
         this.day = day;
     }
 
-    public static ReservationDay from(final int day) throws InvalidDayException {
+    public static ReservationDay from(final int day) throws InvalidReservationDayException {
         return new ReservationDay(day);
     }
 
