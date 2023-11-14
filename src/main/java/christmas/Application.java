@@ -5,9 +5,7 @@ import christmas.view.output.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        DecemberPromotion decemberPromotion = new DecemberPromotion(inputView, outputView);
-        decemberPromotion.run();
+        EventPlanner eventPlanner = new EventPlanner(new InputView(), new OutputView());
+        eventPlanner.execute();
     }
 }
