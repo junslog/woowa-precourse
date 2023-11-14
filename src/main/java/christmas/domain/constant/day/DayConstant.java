@@ -1,4 +1,4 @@
-package christmas.domain.constant;
+package christmas.domain.constant.day;
 
 public enum DayConstant {
     DEFAULT_FIRST_DAY(1),

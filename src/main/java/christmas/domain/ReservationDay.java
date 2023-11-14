@@ -1,12 +1,12 @@
 package christmas.domain;
 
-import static christmas.domain.constant.DayConstant.DECEMBER_CHRISTMAS_DAY;
-import static christmas.domain.constant.DayConstant.DECEMBER_FIRST_DAY;
-import static christmas.domain.constant.DayConstant.DECEMBER_LAST_DAY;
-import static christmas.domain.constant.DayConstant.FRIDAY_VALUE;
-import static christmas.domain.constant.DayConstant.SATURDAY_VALUE;
-import static christmas.domain.constant.DayConstant.SUNDAY_VALUE;
-import static christmas.domain.constant.DayConstant.WEEKDAY_LENGTH;
+import static christmas.domain.constant.day.DayConstant.DECEMBER_CHRISTMAS_DAY;
+import static christmas.domain.constant.day.DayConstant.DECEMBER_FIRST_DAY;
+import static christmas.domain.constant.day.DayConstant.DECEMBER_LAST_DAY;
+import static christmas.domain.constant.day.DayConstant.FRIDAY_VALUE;
+import static christmas.domain.constant.day.DayConstant.SATURDAY_VALUE;
+import static christmas.domain.constant.day.DayConstant.SUNDAY_VALUE;
+import static christmas.domain.constant.day.DayConstant.WEEKDAY_LENGTH;
 
 import christmas.domain.exception.InvalidDayException;
 

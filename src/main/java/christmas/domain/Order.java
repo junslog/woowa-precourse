@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.domain.constant.FoodType;
-import christmas.domain.constant.Menu;
+import christmas.domain.constant.orders.FoodType;
+import christmas.domain.constant.orders.Menu;
 import christmas.domain.exception.InvalidOrdersException;
 
 public class Order {
@@ -27,6 +27,14 @@ public class Order {
 
     public FoodType getFoodType() {
         return menu.getFoodType();
+    }
+
+    public boolean isWeekdayPromotionApplicable() {
+        return menu.isWeekDayPromotionApplicable();
+    }
+
+    public boolean isWeekendPromotionApplicable() {
+        return menu.isWeekendPromotionApplicable();
     }
 
     public int getTotalPrice() {

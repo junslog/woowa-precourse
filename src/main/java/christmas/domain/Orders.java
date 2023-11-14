@@ -1,12 +1,12 @@
 package christmas.domain;
 
-import static christmas.domain.constant.EventConstant.EVENT_APPLICABLE_AMOUNT;
-import static christmas.domain.constant.EventConstant.GIFT_EVENT_APPLICABLE_AMOUNT;
-import static christmas.domain.constant.OrdersConstant.MAX_MENU_COUNTS;
+import static christmas.domain.constant.event.EventConstant.EVENT_APPLICABLE_AMOUNT;
+import static christmas.domain.constant.event.EventConstant.GIFT_EVENT_APPLICABLE_AMOUNT;
+import static christmas.domain.constant.orders.OrdersConstant.MAX_MENU_COUNTS;
 import static christmas.domain.exception.message.InvalidOrdersExceptionMessage.EXCEED_MENU_COUNTS_UPPER_LIMIT;
 import static christmas.domain.exception.message.InvalidOrdersExceptionMessage.MENUS_ONLY_CONTAIN_BEVERAGE;
 
-import christmas.domain.constant.FoodType;
+import christmas.domain.constant.orders.FoodType;
 import christmas.domain.exception.InvalidOrdersException;
 import java.util.List;
 

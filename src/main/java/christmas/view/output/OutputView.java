@@ -19,7 +19,6 @@ import christmas.dto.GiftDto;
 import christmas.dto.OrderedMenusDto;
 import christmas.dto.TotalAmountWithNoDiscountDto;
 import java.text.DecimalFormat;
-import java.util.Optional;
 
 public class OutputView {
     public void printGreetingMessage() {
@@ -63,17 +62,17 @@ public class OutputView {
         printLine();
     }
 
-    public void printGiftMenu(Optional<GiftDto> giftDtoOptional) {
+    public void printGiftMenu(GiftDto giftDto) {
         printLine();
         print(GIFT_MENU.getSymbol());
         printLine();
-        giftDtoOptional.ifPresent(this::printGift);
-        if (giftDtoOptional.isEmpty()) {
-            print(NO_GIFT.getSymbol());
-        }
+        printGift(giftDto);
     }
 
     private void printGift(GiftDto giftDto) {
+        if (giftDto.isEmpty()) {
+            print(NO_GIFT.getSymbol());
+        }
         giftDto.getGift().forEach((giftName, giftCount) -> {
                     printFormatted(GIFT_PRINT_FORMAT.getFormat(), giftName, giftCount);
                     printLine();

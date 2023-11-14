@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import static christmas.domain.constant.DayConstant.DECEMBER_LAST_DAY;
-import static christmas.domain.constant.DayConstant.DEFAULT_FIRST_DAY;
+import static christmas.domain.constant.day.DayConstant.DECEMBER_LAST_DAY;
+import static christmas.domain.constant.day.DayConstant.DEFAULT_FIRST_DAY;
 import static christmas.domain.exception.message.InvalidDayExceptionMessage.NOT_IN_APPROPRIATE_RANGE;
 
 import christmas.domain.exception.InvalidDayException;

@@ -16,4 +16,8 @@ public class GiftDto {
     public Map<String, Integer> getGift() {
         return gift;
     }
+
+    public boolean isEmpty() {
+        return gift.isEmpty();
+    }
 }

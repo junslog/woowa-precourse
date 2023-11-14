@@ -1,9 +1,9 @@
-package christmas.domain.constant;
+package christmas.domain.constant.orders;
 
-import static christmas.domain.constant.FoodType.APPETIZER;
-import static christmas.domain.constant.FoodType.BEVERAGE;
-import static christmas.domain.constant.FoodType.DESSERT;
-import static christmas.domain.constant.FoodType.MAIN;
+import static christmas.domain.constant.orders.FoodType.APPETIZER;
+import static christmas.domain.constant.orders.FoodType.BEVERAGE;
+import static christmas.domain.constant.orders.FoodType.DESSERT;
+import static christmas.domain.constant.orders.FoodType.MAIN;
 import static christmas.domain.exception.message.InvalidOrdersExceptionMessage.NOT_EXISTING_MENU;
 
 import christmas.domain.exception.InvalidOrdersException;
