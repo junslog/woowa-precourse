@@ -12,4 +12,8 @@ public class OrderedMenusDto {
     public static OrderedMenusDto from(Map<String, Integer> orders) {
         return new OrderedMenusDto(orders);
     }
+
+    public Map<String, Integer> getOrders() {
+        return orders;
+    }
 }

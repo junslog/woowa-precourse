@@ -1,9 +1,10 @@
 package christmas.view.output;
 
+import static christmas.view.output.constant.OutputFormatConstant.ORDERED_MENUS_PRINT_FORMAT;
+import static christmas.view.output.constant.OutputFormatConstant.SHOW_RESULT_INTRO_FORMAT;
 import static christmas.view.output.constant.OutputMessageConstant.GREETING;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_ORDERS;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_RESERVATION_DAY;
-import static christmas.view.output.constant.OutputMessageConstant.SHOW_RESULT_INTRO_FORMAT;
 import static christmas.view.output.constant.OutputSymbolConstant.NEW_LINE;
 import static christmas.view.output.constant.OutputSymbolConstant.ORDERED_MENUS;
 
@@ -26,13 +27,20 @@ public class OutputView {
     }
 
     public void announceIntroMessage(final int day) {
-        print(String.format(SHOW_RESULT_INTRO_FORMAT.getMessage(), day));
+        print(String.format(SHOW_RESULT_INTRO_FORMAT.getFormat(), day));
+        printLine();
         printLine();
     }
 
     public void printOrderedMenus(OrderedMenusDto orderedMenusDto) {
         print(ORDERED_MENUS.getSymbol());
+        printLine();
+        orderedMenusDto.getOrders().forEach(this::printOrderedMenu);
+    }
 
+    private void printOrderedMenu(final String menuName, final int menuCount) {
+        print(String.format(ORDERED_MENUS_PRINT_FORMAT.getFormat(), menuName, menuCount));
+        printLine();
     }
 
     public void printLine() {
