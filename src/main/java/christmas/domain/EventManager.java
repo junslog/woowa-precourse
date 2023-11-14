@@ -119,7 +119,11 @@ public class EventManager {
                 .sum();
     }
 
-    public int calculateTotalDiscountedAmount() {
+    public int calculateEstimatedOrdersAmountWithDiscount() {
+        return orders.calculateTotalAmountWithNoDiscount() - calculateTotalDiscountedAmount();
+    }
+
+    private int calculateTotalDiscountedAmount() {
         if (orders.isGiftEventApplicable()) {
             return calculateTotalBenefitedAmount() - calculateGiftPromotionBenefitAmount();
         }
