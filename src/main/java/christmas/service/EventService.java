@@ -2,6 +2,7 @@ package christmas.service;
 
 import static christmas.domain.constant.event.ChristmasPromotion.CHRISTMAS_D_DAY_PROMOTION;
 import static christmas.domain.constant.event.EventConstant.GIFT_CHAMPAGNE_COUNT;
+import static christmas.domain.constant.event.EventConstant.NONE_PROMOTION_APPLIED_AMOUNT;
 import static christmas.domain.constant.event.Promotion.GIFT_PROMOTION;
 import static christmas.domain.constant.event.Promotion.SPECIAL_PROMOTION;
 import static christmas.domain.constant.event.Promotion.WEEKDAY_PROMOTION;
@@ -32,21 +33,25 @@ public class EventService {
     }
 
     public BenefitsDetailsDto createBenefitsDetailsDto(ReservationDay reservationDay, Orders orders) {
-        Map<String, Integer> benefitsDetails = new LinkedHashMap<>();
-        if (orders.isEventApplicable()) {
-            return makeBenefitsDetailsDto(benefitsDetails, reservationDay, orders);
-        }
-        return BenefitsDetailsDto.from(benefitsDetails);
+        return BenefitsDetailsDto.from(createBenefitsDetails(reservationDay, orders));
     }
 
-    private BenefitsDetailsDto makeBenefitsDetailsDto(Map<String, Integer> benefitsDetails,
-                                                      ReservationDay reservationDay, Orders orders) {
+    public Map<String, Integer> createBenefitsDetails(ReservationDay reservationDay, Orders orders) {
+        Map<String, Integer> benefitsDetails = new LinkedHashMap<>();
+        if (orders.isEventApplicable()) {
+            return makeBenefitsDetails(benefitsDetails, reservationDay, orders);
+        }
+        return benefitsDetails;
+    }
+
+    private Map<String, Integer> makeBenefitsDetails(Map<String, Integer> benefitsDetails,
+                                                     ReservationDay reservationDay, Orders orders) {
         addChristmasPromotionDetails(benefitsDetails, reservationDay);
         addWeekdayPromotionDetails(benefitsDetails, reservationDay, orders);
         addWeekendPromotionDetails(benefitsDetails, reservationDay, orders);
         addSpecialPromotionDetails(benefitsDetails, reservationDay);
         addGiftPromotionDetails(benefitsDetails, orders);
-        return BenefitsDetailsDto.from(benefitsDetails);
+        return benefitsDetails;
     }
 
     private void addChristmasPromotionDetails(Map<String, Integer> benefitsDetails, ReservationDay reservationDay) {
@@ -62,10 +67,16 @@ public class EventService {
 
     private void addWeekdayPromotionDetails(Map<String, Integer> benefitsDetails, ReservationDay reservationDay,
                                             Orders orders) {
-        if (reservationDay.isWeekdayPromotionApplicable()) {
+        if (canAddWeekdayPromotion(reservationDay, orders)) {
             benefitsDetails.put(WEEKDAY_PROMOTION.getName(),
                     calculateWeekdayPromotionBenefitAmount(reservationDay, orders));
         }
+    }
+
+    private boolean canAddWeekdayPromotion(ReservationDay reservationDay, Orders orders) {
+        return reservationDay.isWeekdayPromotionApplicable()
+                && calculateWeekdayPromotionBenefitAmount(reservationDay, orders)
+                > NONE_PROMOTION_APPLIED_AMOUNT.getValue();
     }
 
     private int calculateWeekdayPromotionBenefitAmount(ReservationDay reservationDay, Orders orders) {
@@ -78,10 +89,16 @@ public class EventService {
 
     private void addWeekendPromotionDetails(Map<String, Integer> benefitsDetails, ReservationDay reservationDay,
                                             Orders orders) {
-        if (reservationDay.isWeekendPromotionApplicable()) {
+        if (canAddWeekendPromotion(reservationDay, orders)) {
             benefitsDetails.put(WEEKEND_PROMOTION.getName(),
                     calculateWeekendPromotionBenefitAmount(reservationDay, orders));
         }
+    }
+
+    private boolean canAddWeekendPromotion(ReservationDay reservationDay, Orders orders) {
+        return reservationDay.isWeekendPromotionApplicable()
+                && calculateWeekendPromotionBenefitAmount(reservationDay, orders)
+                > NONE_PROMOTION_APPLIED_AMOUNT.getValue();
     }
 
     private int calculateWeekendPromotionBenefitAmount(ReservationDay reservationDay, Orders orders) {
