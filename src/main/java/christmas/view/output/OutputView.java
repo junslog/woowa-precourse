@@ -1,7 +1,9 @@
 package christmas.view.output;
 
 import static christmas.view.output.constant.OutputFormatConstant.ORDERED_MENUS_PRINT_FORMAT;
+import static christmas.view.output.constant.OutputFormatConstant.PRICE_FORMAT_STYLE;
 import static christmas.view.output.constant.OutputFormatConstant.SHOW_RESULT_INTRO_FORMAT;
+import static christmas.view.output.constant.OutputFormatConstant.TOTAL_AMOUNT_WITH_NO_DISCOUNT_PRINT_FORMAT;
 import static christmas.view.output.constant.OutputMessageConstant.GREETING;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_ORDERS;
 import static christmas.view.output.constant.OutputMessageConstant.INSERT_RESERVATION_DAY;
@@ -12,6 +14,7 @@ import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_AMOUNT_W
 import christmas.dto.EventBenefitsPreviewDto;
 import christmas.dto.OrderedMenusDto;
 import christmas.dto.TotalAmountWithNoDiscountDto;
+import java.text.DecimalFormat;
 
 public class OutputView {
     public void printGreetingMessage() {
@@ -50,6 +53,8 @@ public class OutputView {
         printLine();
         print(TOTAL_AMOUNT_WITH_NO_DISCOUNT.getSymbol());
         printLine();
+        printFormattedWithPrice(TOTAL_AMOUNT_WITH_NO_DISCOUNT_PRINT_FORMAT.getFormat(),
+                formatPrice(totalAmountWithNoDiscountDto.getAmount()));
     }
 
     public void printLine() {
@@ -67,5 +72,14 @@ public class OutputView {
 
     private void printFormatted(final String format, final Object... args) {
         print(String.format(format, args));
+    }
+
+    private String formatPrice(final int price) {
+        return new DecimalFormat(PRICE_FORMAT_STYLE.getFormat())
+                .format(price);
+    }
+
+    private void printFormattedWithPrice(final String format, final String formattedPrice, final Object... args) {
+        print(String.format(String.format(format, formattedPrice), args));
     }
 }
