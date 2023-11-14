@@ -11,12 +11,16 @@ public class Order {
         this.count = count;
     }
 
-    public static Order of(Menu menu, final int count) {
-        validate(menu, count);
-        return new Order(menu, count);
+    public static Order of(final String menuName, final int count) {
+        validate(menuName, count);
+        return new Order(Menu.valueOf(menuName), count);
     }
 
-    private static void validate(Menu menu, final int count) {
+    private static void validate(final String menuName, final int count) {
+        validateExistMenu(menuName);
+    }
 
+    private static void validateExistMenu(final String menuName) {
+        Menu menu = Menu.searchByName(menuName);
     }
 }

@@ -12,7 +12,7 @@ public abstract class DayPerMonth {
 
     protected void validate(final int day) {
         if (!isInAppropriateRange(day)) {
-            throw InvalidDayException.of(NOT_IN_APPROPRIATE_RANGE.getMesage());
+            throw InvalidDayException.of(NOT_IN_APPROPRIATE_RANGE.getMessage());
         }
     }
 

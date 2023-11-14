@@ -5,6 +5,12 @@ import static christmas.domain.constant.FoodType.BEVERAGE;
 import static christmas.domain.constant.FoodType.DESSERT;
 import static christmas.domain.constant.FoodType.MAIN;
 
+import christmas.domain.exception.InvalidDayException;
+import christmas.domain.exception.InvalidMenuException;
+import christmas.domain.exception.message.InvalidDayExceptionMessage;
+import christmas.domain.exception.message.InvalidMenuExceptionMessage;
+import java.util.Arrays;
+
 public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6000, APPETIZER),
     TAPAS("타파스", 5500, APPETIZER),
@@ -48,7 +54,12 @@ public enum Menu {
         return foodType.isWeekendPromotionApplicable();
     }
 
-    public static Menu findByName(final String name) {
-        return Menu.valueOf(name);
+    public static Menu searchByName(final String name) {
+        return Arrays.stream(Menu.values())
+                .filter(menu -> menu.name().equalsIgnoreCase(name))
+                .findFirst()
+                .orElseThrow(() -> InvalidMenuException.of(InvalidMenuExceptionMessage.NOT_EXISTING_MENU.getMessage()));
     }
+
+    private
 }

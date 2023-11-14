@@ -5,7 +5,7 @@ public class InvalidDayException extends IllegalArgumentException {
         super(invalidDayExceptionMessage);
     }
 
-    public static InvalidDayException of(final String userMoneyInputExceptionMessage) {
-        return new InvalidDayException(userMoneyInputExceptionMessage);
+    public static InvalidDayException of(final String invalidDayExceptionMessage) {
+        return new InvalidDayException(invalidDayExceptionMessage);
     }
 }
