@@ -18,7 +18,7 @@ public class OrdersInputValidator extends BasicValidator {
         super.validate(ordersInput, ORDER_SYMBOL.getSymbol(), ORDERS_MAX_INPUT_LENGTH.getValue());
     }
 
-    public void postValidate(final String ordersInput) {
+    public void postValidate(final String ordersInput) throws OrdersInputException {
         validateNotExistDuplicatedMenus(ordersInput);
     }
 

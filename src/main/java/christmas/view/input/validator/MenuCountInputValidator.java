@@ -9,7 +9,7 @@ import static christmas.view.input.exception.message.OrdersInputExceptionMessage
 import christmas.view.input.exception.OrdersInputException;
 
 public class MenuCountInputValidator extends BasicValidator implements PositiveIntegerCheckable {
-    public void validate(final String menuCountInput) {
+    public void validate(final String menuCountInput) throws OrdersInputException {
         super.validate(menuCountInput, ORDER_SYMBOL.getSymbol(), MENU_COUNT_MAX_INPUT_LENGTH.getValue());
         validateNumeric(menuCountInput);
         validatePositive(menuCountInput);

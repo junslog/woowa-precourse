@@ -13,6 +13,7 @@ import static christmas.view.input.exception.message.BasicInputExceptionMessageF
 
 import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.DayInputException;
+import christmas.view.input.exception.OrdersInputException;
 import christmas.view.input.validator.DayInputValidator;
 import christmas.view.input.validator.OrderInputValidator;
 import christmas.view.input.validator.OrdersInputValidator;
@@ -38,7 +39,7 @@ public class InputParser {
         return parseToInt(userInput);
     }
 
-    public Map<String, Integer> parseOrders(String userInput) {
+    public Map<String, Integer> parseOrders(String userInput) throws BasicInputException, OrdersInputException {
         checkOrdersLengthIsUnderUpperLimit(userInput);
         userInput = removeBlank(userInput);
         ordersInputValidator.preValidate(userInput);
@@ -72,7 +73,7 @@ public class InputParser {
         return userInput;
     }
 
-    private void validateEachOrder(final String userInput) {
+    private void validateEachOrder(final String userInput) throws BasicInputException, OrdersInputException {
         Arrays.stream(userInput.split(ORDERS_DELIMITER.getSymbol()))
                 .forEach(orderInputValidator::validate);
     }

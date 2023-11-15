@@ -13,7 +13,7 @@ import christmas.domain.exception.InvalidReservationDayException;
 public class ReservationDay extends DayPerMonth {
     private final int day;
 
-    private ReservationDay(final int day) {
+    private ReservationDay(final int day) throws InvalidReservationDayException {
         validate(day);
         this.day = day;
     }

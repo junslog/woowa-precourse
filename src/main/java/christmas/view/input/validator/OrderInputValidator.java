@@ -8,6 +8,7 @@ import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 import static christmas.view.input.exception.message.OrdersInputExceptionMessage.EMPTY_MENU_COUNT;
 import static christmas.view.input.exception.message.OrdersInputExceptionMessage.INVALID_ORDER_FORMAT;
 
+import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.OrdersInputException;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,7 @@ public class OrderInputValidator extends BasicValidator {
         this.menuCountInputValidator = new MenuCountInputValidator();
     }
 
-    public void validate(final String orderInput) {
+    public void validate(final String orderInput) throws BasicInputException, OrdersInputException {
         super.validate(orderInput, ORDER_SYMBOL.getSymbol(), ORDER_MAX_INPUT_LENGTH.getValue());
         validateContainingDelimiter(orderInput);
         validateNotEndsWithDelimiter(orderInput);
@@ -53,7 +54,7 @@ public class OrderInputValidator extends BasicValidator {
                 .toList();
     }
 
-    private void validateMenu(List<String> menuInput) {
+    private void validateMenu(List<String> menuInput) throws BasicInputException, OrdersInputException {
         menuNameInputValidator.validate(menuInput.get(MENU_NAME_INDEX.getValue()));
         menuCountInputValidator.validate(menuInput.get(MENU_COUNT_INDEX.getValue()));
     }

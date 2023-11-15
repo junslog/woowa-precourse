@@ -32,7 +32,7 @@ public class OrdersController {
         }
     }
 
-    private Map<String, Integer> askToInsertOrders() {
+    private Map<String, Integer> askToInsertOrders() throws BasicInputException, OrdersInputException {
         outputView.askToInsertOrders();
         return inputView.getOrders();
     }

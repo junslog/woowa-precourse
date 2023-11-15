@@ -5,7 +5,8 @@ import christmas.view.input.exception.message.BasicInputExceptionMessageFormat;
 
 public abstract class BasicValidator {
 
-    protected void validate(final String userInput, final String inputType, final int maxLength) {
+    protected void validate(final String userInput, final String inputType, final int maxLength)
+            throws BasicInputException {
         validateNotEmpty(userInput, inputType);
         validateLengthUnderMaxLength(userInput, inputType, maxLength);
     }
