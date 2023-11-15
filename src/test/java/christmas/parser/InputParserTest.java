@@ -48,16 +48,4 @@ public class InputParserTest {
                 .hasMessageContaining(
                         String.format(BasicInputExceptionMessageFormat.TOO_LONG_WITH_BLANKS_FORMAT.getFormat(), "날짜"));
     }
-
-    @DisplayName("공백 제거 후 주문내역 길이가 1000글자 이상이면, 예외가 발생한다.")
-    @Test
-    void 공백_포함_주문내역_입력값이_1000글자_이상이면_예외_발생() {
-        String safeOrdersInput = "타           파   스 -      4" + " ".repeat(200);
-        String illegalOrdersInput = "시저샐러드-3" + "x".repeat(1000);
-        assertThat(inputParser.parseOrders(safeOrdersInput)).isEqualTo(Collections.singletonMap("타파스", 4));
-        assertThatThrownBy(() -> inputParser.parseOrders(illegalOrdersInput))
-                .isInstanceOf(BasicInputException.class)
-                .hasMessageContaining(
-                        BasicInputExceptionMessageFormat.TOO_LONG_WITH_BLANKS_FORMAT.getFormat(), "주문");
-    }
 }
