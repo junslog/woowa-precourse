@@ -118,7 +118,7 @@ public class OutputView {
         print(TOTAL_BENEFITED_AMOUNT.getSymbol());
         printLine();
         printFormatted(TOTAL_BENEFITED_AMOUNT_PRINT_FORMAT.getFormat(),
-                formatPrice(totalBenefitedAmountDto.getAmount()));
+                formatPrice(-totalBenefitedAmountDto.getAmount()));
         printLine();
     }
 
