@@ -1,5 +1,6 @@
 package christmas;
 
+import camp.nextstep.edu.missionutils.Console;
 import christmas.controller.OrdersController;
 import christmas.controller.ReservationDayController;
 import christmas.domain.EventManager;
@@ -27,8 +28,8 @@ public class EventPlanner {
         ReservationDay reservationDay = reservationDayController.insertReservationDay();
         Orders orders = ordersController.insertOrders();
         EventManager eventManager = EventManager.of(reservationDay, orders);
-
         printResult(reservationDay, orders, eventManager);
+        terminatePlanner();
     }
 
     private void printResult(ReservationDay reservationDay, Orders orders, EventManager eventManager) {
@@ -73,5 +74,9 @@ public class EventPlanner {
 
     private void printEventBadge(EventManager eventManager) {
         outputView.printEventBadge(eventManagerService.createEventBadgeDto(eventManager));
+    }
+
+    private void terminatePlanner() {
+        Console.close();
     }
 }
