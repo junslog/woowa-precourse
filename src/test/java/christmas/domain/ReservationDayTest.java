@@ -11,7 +11,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class ReservationDayTest {
-
     @DisplayName("유효하지 않은 날짜 ( 1 ~ 31 사이의 숫자가 아닌 숫자 )를 입력하면 예외를 발생시킨다.")
     @ParameterizedTest
     @ValueSource(ints = {0, -1, -10, 300, 350, 500, 32})
