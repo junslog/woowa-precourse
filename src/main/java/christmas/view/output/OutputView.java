@@ -17,6 +17,7 @@ import static christmas.view.output.constant.OutputSymbolConstant.EVENT_BADGE;
 import static christmas.view.output.constant.OutputSymbolConstant.GIFT_MENU;
 import static christmas.view.output.constant.OutputSymbolConstant.NEW_LINE;
 import static christmas.view.output.constant.OutputSymbolConstant.NO_BENEFITS;
+import static christmas.view.output.constant.OutputSymbolConstant.NO_EVENT_BADGE;
 import static christmas.view.output.constant.OutputSymbolConstant.NO_GIFT;
 import static christmas.view.output.constant.OutputSymbolConstant.ORDERED_MENUS;
 import static christmas.view.output.constant.OutputSymbolConstant.TOTAL_AMOUNT_WITH_NO_DISCOUNT;
@@ -134,7 +135,16 @@ public class OutputView {
         printLine();
         print(EVENT_BADGE.getSymbol());
         printLine();
-        print(eventBadgeDto.getBadgeName());
+        printEventBadgeName(eventBadgeDto);
+    }
+
+    private void printEventBadgeName(EventBadgeDto eventBadgeDto) {
+        if (eventBadgeDto.isEmpty()) {
+            print(NO_EVENT_BADGE.getSymbol());
+        }
+        if (!eventBadgeDto.isEmpty()) {
+            print(eventBadgeDto.getBadgeName());
+        }
     }
 
     public void printLine() {

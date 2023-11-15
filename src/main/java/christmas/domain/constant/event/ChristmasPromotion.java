@@ -1,6 +1,6 @@
 package christmas.domain.constant.event;
 
-import static christmas.domain.constant.event.EventConstant.CHRISTMAS_PROMOTION_INCREASING_AMOUNT;
+import static christmas.domain.constant.event.EventNumberConstant.CHRISTMAS_PROMOTION_INCREASING_AMOUNT;
 
 public enum ChristmasPromotion {
     CHRISTMAS_D_DAY_PROMOTION("크리스마스 디데이 할인", 900);

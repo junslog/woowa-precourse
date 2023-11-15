@@ -10,7 +10,8 @@ public enum OutputSymbolConstant {
     ESTIMATED_AMOUNT_WITH_DISCOUNT("<할인 후 예상 결제 금액>"),
     EVENT_BADGE("<12월 이벤트 배지>"),
     NO_GIFT("없음"),
-    NO_BENEFITS("없음");
+    NO_BENEFITS("없음"),
+    NO_EVENT_BADGE("없음");
     private final String symbol;
 
     OutputSymbolConstant(final String symbol) {

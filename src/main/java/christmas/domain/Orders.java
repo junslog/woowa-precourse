@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import static christmas.domain.constant.event.EventConstant.EVENT_APPLICABLE_AMOUNT;
-import static christmas.domain.constant.event.EventConstant.GIFT_EVENT_APPLICABLE_AMOUNT;
+import static christmas.domain.constant.event.EventNumberConstant.EVENT_APPLICABLE_AMOUNT;
+import static christmas.domain.constant.event.EventNumberConstant.GIFT_EVENT_APPLICABLE_AMOUNT;
 import static christmas.domain.constant.orders.OrdersConstant.MAX_MENU_COUNTS;
 import static christmas.domain.exception.message.InvalidOrdersExceptionMessage.EXCEED_MENU_COUNTS_UPPER_LIMIT;
 import static christmas.domain.exception.message.InvalidOrdersExceptionMessage.MENUS_ONLY_CONTAIN_BEVERAGE;

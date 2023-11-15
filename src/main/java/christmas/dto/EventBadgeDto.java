@@ -14,4 +14,8 @@ public class EventBadgeDto {
     public String getBadgeName() {
         return badgeName;
     }
+
+    public boolean isEmpty() {
+        return badgeName.isEmpty();
+    }
 }

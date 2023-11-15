@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import static christmas.domain.constant.event.ChristmasPromotion.CHRISTMAS_D_DAY_PROMOTION;
-import static christmas.domain.constant.event.EventConstant.NONE_PROMOTION_APPLIED_AMOUNT;
+import static christmas.domain.constant.event.EventNumberConstant.NONE_PROMOTION_APPLIED_AMOUNT;
 import static christmas.domain.constant.event.Promotion.GIFT_PROMOTION;
 import static christmas.domain.constant.event.Promotion.SPECIAL_PROMOTION;
 import static christmas.domain.constant.event.Promotion.WEEKDAY_PROMOTION;

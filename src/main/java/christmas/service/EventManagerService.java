@@ -1,7 +1,7 @@
 package christmas.service;
 
 
-import static christmas.domain.constant.event.EventConstant.GIFT_CHAMPAGNE_COUNT;
+import static christmas.domain.constant.event.EventNumberConstant.GIFT_CHAMPAGNE_COUNT;
 
 import christmas.domain.EventManager;
 import christmas.domain.Orders;
