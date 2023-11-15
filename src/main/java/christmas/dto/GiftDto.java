@@ -1,5 +1,6 @@
 package christmas.dto;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class GiftDto {
@@ -14,7 +15,7 @@ public class GiftDto {
     }
 
     public Map<String, Integer> getGift() {
-        return gift;
+        return Collections.unmodifiableMap(gift);
     }
 
     public boolean isEmpty() {

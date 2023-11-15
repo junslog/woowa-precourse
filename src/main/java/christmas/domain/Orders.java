@@ -8,6 +8,7 @@ import static christmas.domain.exception.message.InvalidOrdersExceptionMessage.M
 
 import christmas.domain.constant.orders.FoodType;
 import christmas.domain.exception.InvalidOrdersException;
+import java.util.Collections;
 import java.util.List;
 
 public class Orders {
@@ -65,6 +66,6 @@ public class Orders {
     }
 
     public List<Order> getOrders() {
-        return orders;
+        return Collections.unmodifiableList(orders);
     }
 }

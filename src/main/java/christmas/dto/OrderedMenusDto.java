@@ -1,5 +1,6 @@
 package christmas.dto;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class OrderedMenusDto {
@@ -14,6 +15,6 @@ public class OrderedMenusDto {
     }
 
     public Map<String, Integer> getOrders() {
-        return orders;
+        return Collections.unmodifiableMap(orders);
     }
 }

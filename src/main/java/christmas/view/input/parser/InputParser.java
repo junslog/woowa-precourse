@@ -9,7 +9,7 @@ import static christmas.view.input.constant.InputSymbolConstant.ORDERS_DELIMITER
 import static christmas.view.input.constant.InputSymbolConstant.ORDER_DELIMITER;
 import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 import static christmas.view.input.constant.InputSymbolConstant.VOID;
-import static christmas.view.input.exception.message.BasicInputExceptionMessage.TOO_LONG_WITH_BLANKS;
+import static christmas.view.input.exception.message.BasicInputExceptionMessageFormat.TOO_LONG_WITH_BLANKS_FORMAT;
 
 import christmas.view.input.exception.BasicInputException;
 import christmas.view.input.exception.DayInputException;
@@ -49,13 +49,15 @@ public class InputParser {
 
     private void checkDayLengthIsUnderUpperLimit(final String userInput) {
         if (userInput.length() > APPLICATION_MAX_INPUT_LENGTH.getValue()) {
-            throw BasicInputException.of(String.format(TOO_LONG_WITH_BLANKS.getMessage(), DAY_SYMBOL.getSymbol()));
+            throw BasicInputException.of(
+                    String.format(TOO_LONG_WITH_BLANKS_FORMAT.getFormat(), DAY_SYMBOL.getSymbol()));
         }
     }
 
     private void checkOrdersLengthIsUnderUpperLimit(final String userInput) {
         if (userInput.length() > APPLICATION_MAX_INPUT_LENGTH.getValue()) {
-            throw BasicInputException.of(String.format(TOO_LONG_WITH_BLANKS.getMessage(), ORDER_SYMBOL.getSymbol()));
+            throw BasicInputException.of(
+                    String.format(TOO_LONG_WITH_BLANKS_FORMAT.getFormat(), ORDER_SYMBOL.getSymbol()));
         }
     }
 
@@ -78,7 +80,7 @@ public class InputParser {
     private Map<String, Integer> parseToOrderMap(final String userInput) {
         return Arrays.stream(userInput.split(ORDERS_DELIMITER.getSymbol()))
                 .map(orders -> orders.split(ORDER_DELIMITER.getSymbol()))
-                .collect(Collectors.toMap(
+                .collect(Collectors.toUnmodifiableMap(
                         order -> order[MENU_NAME_INDEX.getValue()],
                         order -> parseToInt(order[MENU_COUNT_INDEX.getValue()])
                 ));

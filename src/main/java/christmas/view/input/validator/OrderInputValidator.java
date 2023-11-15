@@ -11,7 +11,6 @@ import static christmas.view.input.exception.message.OrdersInputExceptionMessage
 import christmas.view.input.exception.OrdersInputException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OrderInputValidator extends BasicValidator {
     private final MenuNameInputValidator menuNameInputValidator;
@@ -51,7 +50,7 @@ public class OrderInputValidator extends BasicValidator {
 
     private List<String> splitToMenuInput(final String orderInput) {
         return Arrays.stream(orderInput.split(ORDER_DELIMITER.getSymbol()))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private void validateMenu(List<String> menuInput) {

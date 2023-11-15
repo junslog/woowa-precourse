@@ -16,7 +16,7 @@ public class OrdersService {
     private List<Order> makeOrders(Map<String, Integer> orders) {
         return orders.entrySet().stream()
                 .map(order -> createOrder(order.getKey(), order.getValue()))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private Order createOrder(final String menuName, final int menuCount) {
@@ -29,7 +29,7 @@ public class OrdersService {
 
     private Map<String, Integer> makeOrdersHistory(Orders orders) {
         return orders.getOrders().stream()
-                .collect(Collectors.toMap(
+                .collect(Collectors.toUnmodifiableMap(
                         Order::getMenuName,
                         Order::getMenuCount
                 ));

@@ -1,7 +1,7 @@
 package christmas.view.input.validator;
 
 import christmas.view.input.exception.BasicInputException;
-import christmas.view.input.exception.message.BasicInputExceptionMessage;
+import christmas.view.input.exception.message.BasicInputExceptionMessageFormat;
 
 public abstract class BasicValidator {
 
@@ -13,14 +13,14 @@ public abstract class BasicValidator {
     protected void validateNotEmpty(final String userInput, final String inputType) {
         if (userInput.isEmpty()) {
             throw BasicInputException.of(
-                    String.format(BasicInputExceptionMessage.EMPTY_FORMAT.getMessage(), inputType));
+                    String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(), inputType));
         }
     }
 
     protected void validateLengthUnderMaxLength(final String userInput, final String inputType, final int maxLength) {
         if (userInput.length() > maxLength) {
             throw BasicInputException.of(
-                    String.format(BasicInputExceptionMessage.TOO_LONG_FORMAT.getMessage(), inputType));
+                    String.format(BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(), inputType));
         }
     }
 }

@@ -12,6 +12,7 @@ public class MenuCountInputValidator extends BasicValidator implements PositiveI
     public void validate(final String menuCountInput) {
         super.validate(menuCountInput, ORDER_SYMBOL.getSymbol(), MENU_COUNT_MAX_INPUT_LENGTH.getValue());
         validateNumeric(menuCountInput);
+        validatePositive(menuCountInput);
     }
 
     @Override

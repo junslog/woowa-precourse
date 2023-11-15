@@ -1,5 +1,6 @@
 package christmas.dto;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class BenefitsDetailsDto {
@@ -14,7 +15,7 @@ public class BenefitsDetailsDto {
     }
 
     public Map<String, Integer> getBenefitsDetails() {
-        return benefitsDetails;
+        return Collections.unmodifiableMap(benefitsDetails);
     }
 
     public boolean isEmpty() {

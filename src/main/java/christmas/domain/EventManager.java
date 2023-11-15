@@ -8,6 +8,7 @@ import static christmas.domain.constant.event.Promotion.WEEKDAY_PROMOTION;
 import static christmas.domain.constant.event.Promotion.WEEKEND_PROMOTION;
 
 import christmas.domain.constant.event.EventBadge;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class EventManager {
         if (orders.isEventApplicable()) {
             return makeBenefitsDetails(benefitsDetails);
         }
-        return benefitsDetails;
+        return Collections.unmodifiableMap(benefitsDetails);
     }
 
     private Map<String, Integer> makeBenefitsDetails(Map<String, Integer> benefitsDetails) {
@@ -38,7 +39,7 @@ public class EventManager {
         addWeekendPromotionDetails(benefitsDetails);
         addSpecialPromotionDetails(benefitsDetails);
         addGiftPromotionDetails(benefitsDetails);
-        return benefitsDetails;
+        return Collections.unmodifiableMap(benefitsDetails);
     }
 
     private void addChristmasPromotionDetails(Map<String, Integer> benefitsDetails) {
