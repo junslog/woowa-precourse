@@ -32,7 +32,7 @@ public class DayInputValidatorTest {
     @DisplayName("공백 제거 후 날짜 길이가 3글자 이상이면, 예외가 발생한다.")
     @ParameterizedTest
     @CsvSource(value = {" 0    3    0 ", "0 0   2", "0 0   0  0 4"})
-    void 공백_제거_후_입력값이_3글자_이상이면_예외_발생(String userInput) {
+    void 공백_제거_후_예약_날짜_입력값이_3글자_이상이면_예외_발생(String userInput) {
         assertThatThrownBy(() -> dayInputValidator.validate(userInput))
                 .isInstanceOf(BasicInputException.class)
                 .hasMessageContaining(
