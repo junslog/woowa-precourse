@@ -1,5 +1,6 @@
 package christmas.validator;
 
+import static christmas.view.input.constant.InputSymbolConstant.DAY_SYMBOL;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.view.input.exception.BasicInputException;
@@ -26,7 +27,8 @@ public class DayInputValidatorTest {
     void 예약_날짜가_비어있는_값일때_예외_발생() {
         assertThatThrownBy(() -> dayInputValidator.validate(""))
                 .isInstanceOf(BasicInputException.class)
-                .hasMessageContaining(String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(), "날짜"));
+                .hasMessageContaining(String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(),
+                        DAY_SYMBOL.getSymbol()));
     }
 
     @DisplayName("공백 제거 후 날짜 길이가 3글자 이상이면, 예외가 발생한다.")
@@ -36,7 +38,8 @@ public class DayInputValidatorTest {
         assertThatThrownBy(() -> dayInputValidator.validate(userInput))
                 .isInstanceOf(BasicInputException.class)
                 .hasMessageContaining(
-                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(), "날짜"));
+                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(),
+                                DAY_SYMBOL.getSymbol()));
     }
 
     @DisplayName("예약 날짜가 숫자형식이 아닌 입력값일 때 예외가 발생한다.")

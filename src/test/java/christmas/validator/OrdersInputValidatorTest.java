@@ -1,5 +1,6 @@
 package christmas.validator;
 
+import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.view.input.exception.BasicInputException;
@@ -26,7 +27,8 @@ public class OrdersInputValidatorTest {
     void 주문_내역이_비어있는_값일때_예외_발생() {
         assertThatThrownBy(() -> ordersInputValidator.preValidate(""))
                 .isInstanceOf(BasicInputException.class)
-                .hasMessageContaining(String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(), "주문"));
+                .hasMessageContaining(String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(),
+                        ORDER_SYMBOL.getSymbol()));
     }
 
     @DisplayName("공백 제거 후 주문 내역 길이가 1000글자 이상이면, 예외가 발생한다.")
@@ -36,7 +38,7 @@ public class OrdersInputValidatorTest {
         assertThatThrownBy(() -> ordersInputValidator.preValidate(illegalOrdersInput))
                 .isInstanceOf(BasicInputException.class)
                 .hasMessageContaining(
-                        BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(), "주문");
+                        BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(), ORDER_SYMBOL.getSymbol());
     }
 
     @DisplayName("주문 내역을 취합했을 때, 중복된 주문 메뉴가 존재하면 예외가 발생한다.")

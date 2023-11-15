@@ -1,5 +1,6 @@
 package christmas.validator;
 
+import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.view.input.exception.BasicInputException;
@@ -26,7 +27,8 @@ public class MenuCountInputValidatorTest {
     void 메뉴_개수가_비어있는_값일때_예외_발생() {
         assertThatThrownBy(() -> menuCountInputValidator.validate(""))
                 .isInstanceOf(BasicInputException.class)
-                .hasMessageContaining(String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(), "주문"));
+                .hasMessageContaining(String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(),
+                        ORDER_SYMBOL.getSymbol()));
     }
 
     @DisplayName("공백 제거 후 메뉴 개수가 3글자 이상이면, 예외가 발생한다.")
@@ -36,7 +38,8 @@ public class MenuCountInputValidatorTest {
         assertThatThrownBy(() -> menuCountInputValidator.validate(userInput))
                 .isInstanceOf(BasicInputException.class)
                 .hasMessageContaining(
-                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(), "주문"));
+                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(),
+                                ORDER_SYMBOL.getSymbol()));
     }
 
     @DisplayName("메뉴 개수가 숫자형식이 아닌 입력값일 때 예외가 발생한다.")

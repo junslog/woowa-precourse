@@ -1,5 +1,7 @@
 package christmas.parser;
 
+import static christmas.view.input.constant.InputSymbolConstant.DAY_SYMBOL;
+import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -37,7 +39,7 @@ public class InputParserTest {
                 .isEqualTo(Collections.singletonMap(menuName, menuCount));
     }
 
-    @DisplayName("공백 포함 입력값의 길이가 2000글자 이상이면, 예외가 발생한다.")
+    @DisplayName("공백 포함 날짜 입력값의 길이가 2000글자 이상이면, 예외가 발생한다.")
     @Test
     void 공백_포함_날짜_입력값이_2000글자_이상이면_예외_발생() {
         String safeDayInput = "1" + " ".repeat(1000);
@@ -46,6 +48,18 @@ public class InputParserTest {
         assertThatThrownBy(() -> inputParser.parseReservationDay(illegalDayInput))
                 .isInstanceOf(BasicInputException.class)
                 .hasMessageContaining(
-                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_WITH_BLANKS_FORMAT.getFormat(), "날짜"));
+                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_WITH_BLANKS_FORMAT.getFormat(),
+                                DAY_SYMBOL.getSymbol()));
+    }
+
+    @DisplayName("공백 포함 주문내역 입력값의 길이가 2000글자 이상이면, 예외가 발생한다.")
+    @Test
+    void 공백_포함_주문내역_입력값이_2000글자_이상이면_예외_발생() {
+        String userInput = "타파스-1" + " ".repeat(2000);
+        assertThatThrownBy(() -> inputParser.parseOrders(userInput))
+                .isInstanceOf(BasicInputException.class)
+                .hasMessageContaining(
+                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_WITH_BLANKS_FORMAT.getFormat(),
+                                ORDER_SYMBOL.getSymbol()));
     }
 }

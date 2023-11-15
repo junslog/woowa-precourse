@@ -1,5 +1,6 @@
 package christmas.validator;
 
+import static christmas.view.input.constant.InputSymbolConstant.ORDER_SYMBOL;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.view.input.exception.BasicInputException;
@@ -27,7 +28,8 @@ public class OrderInputValidatorTest {
     void 주문이_비어있는_값일때_예외_발생() {
         assertThatThrownBy(() -> orderInputValidator.validate(""))
                 .isInstanceOf(BasicInputException.class)
-                .hasMessageContaining(String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(), "주문"));
+                .hasMessageContaining(String.format(BasicInputExceptionMessageFormat.EMPTY_FORMAT.getFormat(),
+                        ORDER_SYMBOL.getSymbol()));
     }
 
     @DisplayName("공백 제거 후 주문 길이가 34글자 이상이면, 예외가 발생한다.")
@@ -39,7 +41,8 @@ public class OrderInputValidatorTest {
         assertThatThrownBy(() -> orderInputValidator.validate(userInput))
                 .isInstanceOf(BasicInputException.class)
                 .hasMessageContaining(
-                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(), "주문"));
+                        String.format(BasicInputExceptionMessageFormat.TOO_LONG_FORMAT.getFormat(),
+                                ORDER_SYMBOL.getSymbol()));
     }
 
     @DisplayName("주문에 구분자(-)가 포함되어 있지 않으면 에외가 발생한다.")
