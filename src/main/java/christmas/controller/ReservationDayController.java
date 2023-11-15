@@ -14,7 +14,7 @@ public class ReservationDayController {
     private final OutputView outputView;
     private final ReservationDayService reservationDayService;
 
-    public ReservationDayController(final InputView inputView, final OutputView outputView) {
+    public ReservationDayController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
         reservationDayService = new ReservationDayService();
