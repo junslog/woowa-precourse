@@ -147,10 +147,6 @@ public class OutputView {
         }
     }
 
-    public void printLine() {
-        System.out.print(NEW_LINE.getSymbol());
-    }
-
     public void printErrorMessage(final String message) {
         print(message);
         printLine();
@@ -158,6 +154,10 @@ public class OutputView {
 
     private void print(final String message) {
         System.out.print(message);
+    }
+
+    private void printLine() {
+        System.out.print(NEW_LINE.getSymbol());
     }
 
     private void printFormatted(final String format, final Object... args) {
