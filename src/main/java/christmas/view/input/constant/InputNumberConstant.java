@@ -3,7 +3,7 @@ package christmas.view.input.constant;
 public enum InputNumberConstant {
     APPLICATION_MAX_INPUT_LENGTH(2000),
     ORDERS_MAX_INPUT_LENGTH(1000),
-    ORDER_MAX_INPUT_LENGTH(50),
+    ORDER_MAX_INPUT_LENGTH(33),
     MENU_NAME_MAX_INPUT_LENGTH(30),
     MENU_COUNT_MAX_INPUT_LENGTH(2),
     DAY_MAX_INPUT_LENGTH(2),
