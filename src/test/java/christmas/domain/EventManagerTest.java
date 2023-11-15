@@ -19,9 +19,7 @@ public class EventManagerTest {
     })
     void 주문_내역과_날짜를_비교해서_혜택_내역을_생산(int day, String menuAndCounts, String expectedBenefitDetails) {
         // given
-        ReservationDay reservationDay = ReservationDay.from(day);
-        Orders orders = Orders.from(parseMenuAndCounts(menuAndCounts));
-        EventManager eventManager = EventManager.of(reservationDay, orders);
+        EventManager eventManager = createEventManager(day, menuAndCounts);
         // when
         Map<String, Integer> benefitsDetails = eventManager.createBenefitsDetails();
         // then
@@ -42,9 +40,8 @@ public class EventManagerTest {
     })
     void 주문_내역에_날짜에_따른_할인_여부를_적용해서_할인_금액_계산(int day, String menuAndCounts, int expectedDiscountAmount) {
         // given
-        ReservationDay reservationDay = ReservationDay.from(day);
         Orders orders = Orders.from(parseMenuAndCounts(menuAndCounts));
-        EventManager eventManager = EventManager.of(reservationDay, orders);
+        EventManager eventManager = createEventManager(day, menuAndCounts);
         // when
         int discountAmount =
                 orders.calculateTotalAmountWithNoDiscount() - eventManager.calculateEstimatedOrdersAmountWithDiscount();
@@ -61,9 +58,7 @@ public class EventManagerTest {
     })
     void 혜택_내역의_금액을_합쳐서_총_혜택_금액을_계산(int day, String menuAndCounts, int expectedDiscountAmount) {
         // given
-        ReservationDay reservationDay = ReservationDay.from(day);
-        Orders orders = Orders.from(parseMenuAndCounts(menuAndCounts));
-        EventManager eventManager = EventManager.of(reservationDay, orders);
+        EventManager eventManager = createEventManager(day, menuAndCounts);
         // when
         int discountAmount = eventManager.calculateTotalBenefitedAmount();
         // then
@@ -81,13 +76,17 @@ public class EventManagerTest {
     })
     void 총_혜택_금액을_기반으로_12월_이벤트_배지를_발급(int day, String menuAndCounts, String expectedEventBadge) {
         // given
-        ReservationDay reservationDay = ReservationDay.from(day);
-        Orders orders = Orders.from(parseMenuAndCounts(menuAndCounts));
-        EventManager eventManager = EventManager.of(reservationDay, orders);
+        EventManager eventManager = createEventManager(day, menuAndCounts);
         // when
         String eventBadge = eventManager.issueEventBadge();
         // then
         assertThat(eventBadge).isEqualTo(expectedEventBadge);
+    }
+
+    private EventManager createEventManager(int day, String menuAndCounts) {
+        ReservationDay reservationDay = ReservationDay.from(day);
+        Orders orders = Orders.from(parseMenuAndCounts(menuAndCounts));
+        return EventManager.of(reservationDay, orders);
     }
 
     private List<Order> parseMenuAndCounts(String menuAndCounts) {
